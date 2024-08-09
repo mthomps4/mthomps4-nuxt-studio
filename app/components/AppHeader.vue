@@ -35,6 +35,8 @@ const { header } = useAppConfig()
         class="lg:hidden"
       />
 
+      <p>Hello</p>
+
       <UColorModeButton v-if="header?.colorMode" />
 
       <template v-if="header?.links">
