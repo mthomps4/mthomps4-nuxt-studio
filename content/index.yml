@@ -66,7 +66,8 @@ features:
       icon: 'i-heroicons-magnifying-glass-20-solid'
       to: 'https://ui.nuxt.com/pro/components/docs/docs-search'
       target: '_blank'
-feat: 
+section: 
+  features: 
     title: 'Some other feature set'
     links: 
       - label: 'Something new'
