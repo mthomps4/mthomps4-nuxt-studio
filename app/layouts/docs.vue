@@ -9,7 +9,8 @@ const navigation = inject<Ref<NavItem[]>>('navigation')
     <UPage>
       <template #left>
         <UAside>
-          <UNavigationTree :links="mapContentNavigation(navigation)" />
+          <h3 class="font-semibold">More Reads:</h3>
+          <UNavigationTree :links="mapContentNavigation(navigation)" :defaultOpen=true />
         </UAside>
       </template>
 

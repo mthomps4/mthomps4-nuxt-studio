@@ -13,38 +13,29 @@ const { header } = useAppConfig()
         <UColorModeImage v-bind="{ class: 'h-6 w-auto', ...header?.logo }" />
       </template>
       <template v-else>
-        Nuxt UI Pro <UBadge
-          label="Docs"
-          variant="subtle"
-          class="mb-0.5"
-        />
+        Nuxt UI Pro
+        <UBadge label="Docs" variant="subtle" class="mb-0.5" />
       </template>
     </template>
 
-    <template
-      v-if="header?.search"
-      #center
-    >
+    <template>
+      <ULink to="/blog">
+        <UButton v-bind="{ color: 'gray', variant: 'ghost', ...header?.home }" />
+      </ULink>
+    </template>
+
+    <template v-if="header?.search" #center>
       <UContentSearchButton class="hidden lg:flex" />
     </template>
 
     <template #right>
-      <UContentSearchButton
-        v-if="header?.search"
-        :label="null"
-        class="lg:hidden"
-      />
-
-      <p>Hello</p>
+      <UContentSearchButton v-if="header?.search" :label="null" class="lg:hidden" />
 
       <UColorModeButton v-if="header?.colorMode" />
 
       <template v-if="header?.links">
-        <UButton
-          v-for="(link, index) of header.links"
-          :key="index"
-          v-bind="{ color: 'gray', variant: 'ghost', ...link }"
-        />
+        <UButton v-for="(link, index) of header.links" :key="index"
+          v-bind="{ color: 'gray', variant: 'ghost', ...link }" />
       </template>
     </template>
 
