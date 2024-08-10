@@ -42,10 +42,10 @@ useSeoMeta({
     :avatar="{ src: 'https://avatars.githubusercontent.com/u/739984?v=4' }" title="Heads up!" />
 
   <ULink to="/blog">
-    <UButton v-bind="{ color: 'gray', variant: 'ghost' }"> to Blog </UButton>
+    <UButton v-bind="{ color: 'teal', variant: 'link' }"> to Blog </UButton>
   </ULink>
 
   <ULink to="/toc">
-    <UButton v-bind="{ color: 'gray', variant: 'ghost' }"> to TOC </UButton>
+    <UButton v-bind="{ color: 'teal', variant: 'link' }"> to TOC </UButton>
   </ULink>
 </template>
