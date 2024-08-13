@@ -62,7 +62,29 @@ export default defineNuxtSchema({
           description: 'Primary color of your UI.',
           icon: 'i-mdi-palette-outline',
           default: 'green',
-          required: ['sky', 'mint', 'rose', 'amber', 'violet', 'emerald', 'fuchsia', 'indigo', 'lime', 'orange', 'pink', 'purple', 'red', 'teal', 'yellow', 'green', 'blue', 'cyan', 'gray', 'white', 'black']
+          required: [
+            'sky',
+            'mint',
+            'rose',
+            'amber',
+            'violet',
+            'emerald',
+            'fuchsia',
+            'indigo',
+            'lime',
+            'orange',
+            'pink',
+            'purple',
+            'red',
+            'teal',
+            'yellow',
+            'green',
+            'blue',
+            'cyan',
+            'gray',
+            'white',
+            'black'
+          ]
         }),
         gray: field({
           type: 'string',
@@ -82,7 +104,8 @@ export default defineNuxtSchema({
         siteName: field({
           type: 'string',
           title: 'Site Name',
-          description: 'Name used in ogSiteName and used as second part of your page title (My page title - Nuxt UI Pro).',
+          description:
+            'Name used in ogSiteName and used as second part of your page title (My page title - Nuxt UI Pro).',
           icon: 'i-mdi-web',
           default: []
         })

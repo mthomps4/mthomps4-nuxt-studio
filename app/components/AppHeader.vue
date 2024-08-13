@@ -14,28 +14,42 @@ const { header } = useAppConfig()
       </template>
       <template v-else>
         Nuxt UI Pro
-        <UBadge label="Docs" variant="subtle" class="mb-0.5" />
+        <UBadge
+          label="Docs"
+          variant="subtle"
+          class="mb-0.5"
+        />
       </template>
     </template>
 
-    <template>
+    <div>
       <ULink to="/blog">
         <UButton v-bind="{ color: 'gray', variant: 'ghost', ...header?.home }" />
       </ULink>
-    </template>
+    </div>
 
-    <template v-if="header?.search" #center>
+    <template
+      v-if="header?.search"
+      #center
+    >
       <UContentSearchButton class="hidden lg:flex" />
     </template>
 
     <template #right>
-      <UContentSearchButton v-if="header?.search" :label="null" class="lg:hidden" />
+      <UContentSearchButton
+        v-if="header?.search"
+        :label="null"
+        class="lg:hidden"
+      />
 
       <UColorModeButton v-if="header?.colorMode" />
 
       <template v-if="header?.links">
-        <UButton v-for="(link, index) of header.links" :key="index"
-          v-bind="{ color: 'gray', variant: 'ghost', ...link }" />
+        <UButton
+          v-for="(link, index) of header.links"
+          :key="index"
+          v-bind="{ color: 'gray', variant: 'ghost', ...link }"
+        />
       </template>
     </template>
 

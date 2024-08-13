@@ -8,8 +8,11 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "lint": "eslint .",
-    "typecheck": "nuxt typecheck"
+    "typecheck": "nuxt typecheck",
+    "lint": "yarn lint:eslint && yarn lint:prettier",
+    "lint:eslint": "eslint .",
+    "lint:prettier": "prettier . --check",
+    "lint:fix": "eslint . --fix"
   },
   "dependencies": {
     "@iconify-json/heroicons": "^1.1.21",
@@ -24,7 +27,11 @@
   "devDependencies": {
     "@nuxt/eslint": "^0.3.13",
     "@nuxthq/studio": "^2.0.3",
-    "eslint": "^9.6.0",
+    "eslint": "^9.9.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "prettier": "^3.3.3",
+    "typescript": "^5.5.4",
     "vue-tsc": "^2.0.26"
   }
 }
