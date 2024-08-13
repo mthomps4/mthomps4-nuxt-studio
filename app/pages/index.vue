@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { data: page } = await useAsyncData('index', () => queryContent('/').findOne())
+const { data: page } = await useAsyncData('index', () => queryContent('/main/about').findOne())
 
 useSeoMeta({
   titleTemplate: '',
@@ -11,50 +11,19 @@ useSeoMeta({
 </script>
 
 <template>
-  <div>
-    <ULandingHero
-      v-if="page.hero"
-      v-bind="page.hero"
+  <main>
+    <UPageHero
+      :title="page.hero.title"
+      :description="page.hero.description"
+      :links="page.hero.links"
+      align="right"
+      class="p-4 md:p-8"
     >
-      <template #headline>
-        <UBadge
-          v-if="page.hero.headline"
-          variant="subtle"
-          size="lg"
-          class="relative rounded-full font-semibold"
-        >
-          <NuxtLink
-            :to="page.hero.headline.to"
-            target="_blank"
-            class="focus:outline-none"
-            tabindex="-1"
-          >
-            <span
-              class="absolute inset-0"
-              aria-hidden="true"
-            />
-          </NuxtLink>
-
-          {{ page.hero.headline.label }}
-
-          <UIcon
-            v-if="page.hero.headline.icon"
-            :name="page.hero.headline.icon"
-            class="ml-1 w-4 h-4 pointer-events-none"
-          />
-        </UBadge>
-      </template>
-
-      <template #title>
-        <MDC :value="page.hero.title" />
-      </template>
-
-      <MDC
-        :value="page.hero.code"
-        tag="pre"
-        class="prose prose-primary dark:prose-invert mx-auto"
-      />
-    </ULandingHero>
+      <img
+        src="/avatars/portrait.png"
+        class="w-full rounded-md shadow-xl ring-1 ring-gray-300 dark:ring-gray-700"
+      >
+    </UPageHero>
     <ULandingSection
       :title="page.features.title"
       :links="page.features.links"
@@ -67,24 +36,5 @@ useSeoMeta({
         />
       </UPageGrid>
     </ULandingSection>
-    <UAlert
-      description="You can add components to your app using the cli."
-      :avatar="{ src: 'https://avatars.githubusercontent.com/u/739984?v=4' }"
-      title="Heads up!"
-    />
-
-    <section>
-      <ULink to="/blog">
-        <UButton v-bind="{ color: 'teal', variant: 'link' }">
-          to Blog
-        </UButton>
-      </ULink>
-
-      <ULink to="/blog/toc">
-        <UButton v-bind="{ color: 'teal', variant: 'link' }">
-          to TOC
-        </UButton>
-      </ULink>
-    </section>
-  </div>
+  </main>
 </template>

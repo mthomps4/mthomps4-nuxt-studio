@@ -1,6 +1,6 @@
 export default defineAppConfig({
   ui: {
-    primary: 'blue',
+    primary: 'cyan',
     gray: 'slate',
     footer: {
       bottom: {
@@ -10,22 +10,31 @@ export default defineAppConfig({
     }
   },
   seo: {
-    siteName: 'Matt Thompson '
+    siteName: 'Matt Thompson'
   },
   header: {
     logo: {
-      alt: '',
-      light: '',
-      dark: ''
+      alt: 'Matt Thompson',
+      light: '/brand/MThompson-blue.svg',
+      dark: '/brand/MThompson-white.svg'
     },
     search: true,
     colorMode: true,
     links: [
       {
-        'icon': 'i-simple-icons-github',
-        'to': 'https://github.com/nuxt-ui-pro/docs',
-        'target': '_blank',
-        'aria-label': 'Docs template on GitHub'
+        'label': 'About',
+        'to': '/',
+        'aria-label': 'About'
+      },
+      {
+        'label': 'Connect',
+        'to': '/connect',
+        'aria-label': 'Connect'
+      },
+      {
+        'label': 'Blog',
+        'to': '/blog/toc',
+        'aria-label': 'Blog'
       }
     ]
   },

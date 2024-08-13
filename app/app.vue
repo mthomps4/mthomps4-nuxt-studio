@@ -25,6 +25,20 @@ useSeoMeta({
   twitterCard: 'summary_large_image'
 })
 
+const links = [
+  {
+    label: 'About',
+    to: '/',
+    icon: 'i-heroicons-user-20-solid'
+  },
+  {
+    label: 'Connect',
+    to: '/connect',
+    icon: 'i-heroicons-envelope-20-solid'
+  }
+]
+
+provide('files', files)
 provide('navigation', navigation)
 </script>
 
@@ -46,6 +60,7 @@ provide('navigation', navigation)
       <LazyUContentSearch
         :files="files"
         :navigation="navigation"
+        :links="links"
       />
     </ClientOnly>
 

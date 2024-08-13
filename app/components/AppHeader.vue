@@ -10,33 +10,15 @@ const { header } = useAppConfig()
   <UHeader>
     <template #logo>
       <template v-if="header?.logo?.dark || header?.logo?.light">
-        <UColorModeImage v-bind="{ class: 'h-6 w-auto', ...header?.logo }" />
+        <img
+          src="/mascots/lion-logo.png"
+          class="h-12 w-12 rounded-full"
+        >
+        <UColorModeImage v-bind="{ class: 'h-12 w-auto', ...header?.logo }" />
       </template>
       <template v-else>
-        Nuxt UI Pro
-        <UBadge
-          label="Docs"
-          variant="subtle"
-          class="mb-0.5"
-        />
+        Matt Thompson
       </template>
-
-      <ULink to="/main/about">
-        <UButton v-bind="{ color: 'gray', variant: 'solid' }">
-          About
-        </UButton>
-      </ULink>
-      <ULink to="/main/contact">
-        <UButton v-bind="{ color: 'gray', variant: 'solid' }">
-          Contact
-        </UButton>
-      </ULink>
-
-      <ULink to="/blog/toc">
-        <UButton v-bind="{ color: 'gray', variant: 'solid' }">
-          Blog
-        </UButton>
-      </ULink>
     </template>
 
     <template
@@ -53,19 +35,25 @@ const { header } = useAppConfig()
         class="lg:hidden"
       />
 
-      <UColorModeButton v-if="header?.colorMode" />
-
-      <template v-if="header?.links">
-        <UButton
-          v-for="(link, index) of header.links"
-          :key="index"
-          v-bind="{ color: 'gray', variant: 'ghost', ...link }"
-        />
+      <template
+        v-if="header?.links"
+      >
+        <div class="hidden sm:block">
+          <UButton
+            v-for="(link, index) of header.links"
+            :key="index"
+            v-bind="{ color: 'gray', variant: 'ghost', ...link }"
+          />
+        </div>
       </template>
+      <UColorModeButton v-if="header?.colorMode" />
     </template>
 
     <template #panel>
-      <UNavigationTree :links="mapContentNavigation(navigation)" />
+      <UNavigationTree
+        :links="mapContentNavigation(navigation)"
+        :default-open="true"
+      />
     </template>
   </UHeader>
 </template>

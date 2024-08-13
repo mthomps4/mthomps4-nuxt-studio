@@ -20,7 +20,50 @@ export default defineNuxtConfig({
       globals.forEach(c => (c.global = true))
     }
   },
-
+  content: {
+    highlight: {
+      theme: 'one-dark-pro',
+      langs: [
+        'json',
+        'yaml',
+        'bash',
+        'markdown',
+        'html',
+        'vue',
+        'ts',
+        'js',
+        'css',
+        'scss',
+        'less',
+        'stylus',
+        'go',
+        'java',
+        'c',
+        'cpp',
+        'php',
+        'python',
+        'ruby',
+        'rust',
+        'sql',
+        'swift',
+        'toml',
+        'xml',
+        'html',
+        'vue',
+        'elixir',
+        'ruby',
+        'jsx',
+        'tsx',
+        'typescript',
+        'shell',
+        'shellscript',
+        'zsh'
+      ]
+    },
+    navigation: {
+      fields: ['title', 'description', 'navigation', 'path', 'icon', 'twitter_image', 'og_image']
+    }
+  },
   ui: {
     icons: ['heroicons', 'simple-icons']
   },

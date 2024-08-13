@@ -28,15 +28,16 @@ useSeoMeta({
   title: page.value.title,
   ogTitle: `${page.value.title} - ${seo?.siteName}`,
   description: page.value.description,
-  ogDescription: page.value.description
+  ogDescription: page.value.description,
+  twitterImage: page.value.twitter_image,
+  ogImage: page.value.og_image
 })
 
 defineOgImage({
   // component: 'Docs',
   title: page.value.title,
   alt: page.value.title,
-  description: page.value.description,
-  url: '/site/og-base.png'
+  description: page.value.description
 })
 
 const headline = computed(() => findPageHeadline(page.value))
