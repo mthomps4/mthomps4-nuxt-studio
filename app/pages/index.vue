@@ -4,42 +4,58 @@ const { data: page } = await useAsyncData('index', () => queryContent('/main/abo
 useSeoMeta({
   titleTemplate: '',
   title: page.value.title,
-  ogTitle: page.value.title,
   description: page.value.description,
+  ogTitle: page.value.title,
   ogDescription: page.value.description
 })
 </script>
 
 <template>
-  <main>
+  <UContainer>
     <UPageHero
       :title="page.hero.title"
       :description="page.hero.description"
       :links="page.hero.links"
-      align="right"
-      class="p-4 md:p-8"
-    >
-      <div class="flex flex-col items-center justify-center">
-        <div class="m-4 p-4 bg-gradient-to-tr from-cyan-600 via-cyan-100 via-40% to-cyan-300 rounded-md aspect-square w-[500px] h-[500px]">
+      orientation="horizontal"
+      align="center"
+    />
+    <ULandingCard>
+      <section class="flex flex-col sm:flex-row items-center justify-center gap-12">
+        <NuxtImg
+          provider="imagekit"
+          :src="page.hero.image"
+          class="w-full sm:w-1/2 aspect-square rounded-md"
+        />
+        <div class="w-full sm:w-1/2">
+          <h2 class="font-bold text-xl">
+            {{ page.hero.subtitle }}
+          </h2>
+          <div
+            v-for="(item, index) of page.hero.summary"
+            :key="index"
+          >
+            <p class="my-2">
+              {{ item.text }}
+            </p>
+          </div>
+        </div>
+      </section>
+    </ULandingCard>
+    <ULandingSection :title="page.features.title">
+      <ULandingGrid>
+        <ULandingCard
+          v-for="(card, index) of page.features.cards"
+          :key="index"
+          v-bind="card"
+          class="col-span-12 sm:col-span-6"
+        >
           <NuxtImg
             provider="imagekit"
-            :src="page.hero.image"
+            :src="card.image"
             class="w-full aspect-square rounded-md"
           />
-        </div>
-      </div>
-    </UPageHero>
-    <ULandingSection
-      :title="page.features.title"
-      :links="page.features.links"
-    >
-      <UPageGrid>
-        <ULandingCard
-          v-for="(item, index) of page.features.items"
-          :key="index"
-          v-bind="item"
-        />
-      </UPageGrid>
+        </ULandingCard>
+      </ULandingGrid>
     </ULandingSection>
-  </main>
+  </UContainer>
 </template>

@@ -43,28 +43,22 @@ export default defineAppConfig({
     colorMode: false,
     links: [
       {
-        'icon': 'i-simple-icons-nuxtdotjs',
-        'to': 'https://nuxt.com',
+        'icon': 'i-simple-icons-linkedin',
+        'to': 'https://linkedin.com/in/mthomps4',
         'target': '_blank',
-        'aria-label': 'Nuxt Website'
-      },
-      {
-        'icon': 'i-simple-icons-discord',
-        'to': 'https://discord.com/invite/ps2h6QT',
-        'target': '_blank',
-        'aria-label': 'Nuxt UI on Discord'
+        'aria-label': 'LinkedIN - Matt Thompson'
       },
       {
         'icon': 'i-simple-icons-x',
-        'to': 'https://x.com/nuxt_js',
+        'to': 'https://x.com/mthomsp4',
         'target': '_blank',
-        'aria-label': 'Nuxt on X'
+        'aria-label': '@mthomps4 on X'
       },
       {
         'icon': 'i-simple-icons-github',
-        'to': 'https://github.com/nuxt/ui',
+        'to': 'https://github.com/mthomps4',
         'target': '_blank',
-        'aria-label': 'Nuxt UI on GitHub'
+        'aria-label': '@mthomps4 on GitHub'
       }
     ]
   },

@@ -1,69 +1,36 @@
-title: 'About'
-description: "Matt Thompson is a software engineer, mentor, and woodworker."
+title: 'Matt Thompson - About'
+description: "Software Architect by Day | Unplugged Engineer by Night"
 navigation: false
 hero:
   title: 'Matt Thompson'
-  description: 'Engineer, Mentor, and Woodworker'
+  description: "Software Architect by Day | Unplugged Engineer by Night"
+  summary:
+    - text: "I'm a builder and creator at heart."
+    - text: "For over a decade, I've been immersed in the software consulting world, working across industries such as IP Advertising, Healthcare, Telecom, and E-Commerce. I've helped companies understand and solve complex problems while leading teams to drive progress. My primary focus is on solving the right problems and fostering team growth. No one should tackle this kind of work alone. I aim to share my understanding and pitfalls in hopes of building momentum."
+    - text: "During the day, I find myself meeting with stakeholders, project leads, and engineering teams, aiming to define and resolve the problems at hand. My goal is to offer multiple solutions, focusing on what makes sense for both today and the future. I scout ahead, carving a path of options for others to follow."
+    - text: "Beyond software, my passion extends into the physical world of fine woodworking, metalworking, and tool restoration. This pursuit is more than a hobby, it's a commitment to preserving and honing the craft. By collecting books, articles, and resources, I strive to share the knowledge and history I find, learning along the way. I aspire to absorb all I can and share the legacy of learning a craft with the next generation."
+    - text: "Who knows? Maybe one day, I'll bridge the gap between traditional craftsmanship and modern technology in a unique pet project. (AI and Robotics, anyone?) Come along with me on this journey of learning, building, and creating in all sorts of ways."
   orientation: horizontal
   image: '/Avatars/tr:w-500,h-500/portrait.png'
   links:
-    - label: Get started
+    - label: Connect with me
       icon: i-heroicons-arrow-right-20-solid
       trailing: true
-      to: '/blog/getting-started'
-      size: lg
-    - label: Use this template
-      icon: i-simple-icons-github
-      size: lg
-      color: gray
-      to: https://github.com/nuxt-ui-pro/docs
-      target: _blank
-  code: |
-    ```bash [Terminal]
-    npx nuxi init -t github:nuxt-ui-pro/docs
-    ```
+      to: '/connect'
+      size: xl
+  subtitle: "About Me"
 features:
-  title: 'All-in-one docs template'
-  links:
-    - label: 'Explore Nuxt UI Pro'
-      icon: 'i-simple-icons-nuxtdotjs'
-      trailingIcon: 'i-heroicons-arrow-right-20-solid'
-      color: 'gray'
-      to: 'https://ui.nuxt.com/pro'
-      target: '_blank'
-      size: lg
-  items:
-    - title: 'Nuxt 3'
-      description: 'Powered by Nuxt 3 for optimal performances and SEO.'
-      icon: 'i-simple-icons-nuxtdotjs'
-      to: 'https://nuxt.com'
-      target: '_blank'
-    - title: 'Markdown'
-      description: 'Write your pages with MDC thanks to Nuxt Content.'
-      icon: 'i-simple-icons-markdown'
-      to: 'https://content.nuxt.com'
-      target: '_blank'
-    - title: 'Nuxt UI'
-      description: 'Offers a very large set of full customizable components.'
-      icon: 'i-heroicons-sparkles-20-solid'
-      to: 'https://ui.nuxt.com'
-      target: '_blank'
-    - title: 'TypeScript'
-      description: 'A fully typed development experience.'
-      icon: 'i-simple-icons-typescript'
-      to: 'https://www.typescriptlang.org'
-      target: '_blank'
-    - title: 'Nuxt Studio'
-      description: 'Supported by Nuxt Studio for fast updates and previews.'
-      icon: 'i-simple-icons-nuxtdotjs'
-      to: 'https://nuxt.studio'
-      target: '_blank'
-    - title: 'Search'
-      description: 'A full-text search modal empowered by Fuse.js.'
-      icon: 'i-heroicons-magnifying-glass-20-solid'
-      to: 'https://ui.nuxt.com/pro/components/docs/docs-search'
-      target: '_blank'
-code: |
-  ```ts
-    const getGreetings = (name: string) => `Hello ${name}!`
-  ```
+  title: 'Follow Along...'
+  cards:
+    - title: 'The Engineer'
+      subtitle: 'The Digital Forge'
+      description: "With over a decade of experience, join me as I navigate the highs and lows of software engineering. From getting \"Up and Running\" to delving into Leadership and Management, this space is for anyone intrigued by the world of tech."
+      icon: 'i-heroicons-book-open'
+      image: '/site/tr:w-500,h-500/split-key.jpg'
+      to: '/blog'
+    - title: 'The Craftsman'
+      subtitle: 'The Armory'
+      image: '/site/tr:w-500,h-500/handplane.png'
+      description: "If you're drawn to the art of fine woodworking, design, and random shop projects, this is your spot. Join me as I share insights from my own journey, along with a growing collection of resources that inspire and guide my craft. Follow my hands-on adventure in creation and craftsmanship."
+      icon: 'i-heroicons-wrench-screwdriver'
+      to: '/blog'

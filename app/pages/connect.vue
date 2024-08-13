@@ -1,19 +1,35 @@
 <script lang="ts" setup>
-// TODO: Add from YML
+const { data: page } = await useAsyncData('index', () => queryContent('/main/connect').findOne())
+
+useSeoMeta({
+  titleTemplate: '',
+  title: page.value.title,
+  description: page.value.description,
+  ogTitle: page.value.title,
+  ogDescription: page.value.description
+})
 </script>
 
 <template>
-  <main>
-    <UPageHero
-      title="Connect"
-      description="Stay in touch!"
-      align="right"
-      class="p-4 md:p-8"
+  <UContainer>
+    <ULandingSection
+      :title="page.title"
+      :description="page.description"
     >
-      <img
-        src="/avatars/portrait.png"
-        class="w-full rounded-md shadow-xl ring-1 ring-gray-300 dark:ring-gray-700"
-      >
-    </UPageHero>
-  </main>
+      <div class="grid grid-cols-1 gap-4 w-1/2 mx-auto">
+        <ULandingCard
+          v-for="(item, index) of page.connections.items"
+          :key="index"
+          v-bind="item"
+          orientation="horizontal"
+        >
+          <p>I STOPPED HERE</p>
+          <NuxtImage
+            src="https://placehold.co/500x500"
+            class="aspect-square w-full"
+          />
+        </ULandingCard>
+      </div>
+    </ULandingSection>
+  </UContainer>
 </template>

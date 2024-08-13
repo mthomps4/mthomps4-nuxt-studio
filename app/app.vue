@@ -43,7 +43,7 @@ provide('navigation', navigation)
 </script>
 
 <template>
-  <div>
+  <div class="bg-slate-50 dark:bg-slate-800">
     <NuxtLoadingIndicator />
 
     <AppHeader />
