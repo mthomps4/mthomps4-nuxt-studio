@@ -32,10 +32,11 @@ useSeoMeta({
 })
 
 defineOgImage({
-  component: 'Docs',
+  // component: 'Docs',
   title: page.value.title,
   alt: page.value.title,
-  description: page.value.description
+  description: page.value.description,
+  url: '/site/og-base.png'
 })
 
 const headline = computed(() => findPageHeadline(page.value))
