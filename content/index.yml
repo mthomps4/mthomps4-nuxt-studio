@@ -13,7 +13,7 @@ hero:
     - label: Get started
       icon: i-heroicons-arrow-right-20-solid
       trailing: true
-      to: '/getting-started'
+      to: '/blog/getting-started'
       size: lg
     - label: Use this template
       icon: i-simple-icons-github
@@ -73,7 +73,7 @@ code: |
 button:
   label: 'Get started'
   icon: 'i-heroicons-arrow-right-20-solid'
-  to: '/getting-started'
+  to: '/blog/getting-started'
   size: lg
   color: primary
   trailing: true

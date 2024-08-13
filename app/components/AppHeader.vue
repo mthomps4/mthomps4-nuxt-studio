@@ -21,18 +21,18 @@ const { header } = useAppConfig()
         />
       </template>
 
-      <ULink to="/about">
+      <ULink to="/main/about">
         <UButton v-bind="{ color: 'gray', variant: 'solid' }">
           About
         </UButton>
       </ULink>
-      <ULink to="/contact">
+      <ULink to="/main/contact">
         <UButton v-bind="{ color: 'gray', variant: 'solid' }">
           Contact
         </UButton>
       </ULink>
 
-      <ULink to="/toc">
+      <ULink to="/blog/toc">
         <UButton v-bind="{ color: 'gray', variant: 'solid' }">
           Blog
         </UButton>

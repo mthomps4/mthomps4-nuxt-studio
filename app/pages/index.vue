@@ -80,7 +80,7 @@ useSeoMeta({
         </UButton>
       </ULink>
 
-      <ULink to="/toc">
+      <ULink to="/blog/toc">
         <UButton v-bind="{ color: 'teal', variant: 'link' }">
           to TOC
         </UButton>
