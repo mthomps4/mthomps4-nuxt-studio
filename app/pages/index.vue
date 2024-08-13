@@ -19,10 +19,11 @@ useSeoMeta({
       align="right"
       class="p-4 md:p-8"
     >
-      <img
-        src="/avatars/portrait.png"
-        class="w-full rounded-md shadow-xl ring-1 ring-gray-300 dark:ring-gray-700"
-      >
+      <NuxtImg
+        provider="imagekit"
+        src="/Avatars/portrait.png"
+        class="w-full aspect-square rounded-md shadow-xl"
+      />
     </UPageHero>
     <ULandingSection
       :title="page.features.title"

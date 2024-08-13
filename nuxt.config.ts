@@ -64,6 +64,12 @@ export default defineNuxtConfig({
       fields: ['title', 'description', 'navigation', 'path', 'icon', 'twitter_image', 'og_image']
     }
   },
+  image: {
+    inject: true,
+    imagekit: {
+      baseURL: 'https://ik.imagekit.io/mthomps4/'
+    }
+  },
   ui: {
     icons: ['heroicons', 'simple-icons']
   },
