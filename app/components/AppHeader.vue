@@ -10,11 +10,13 @@ const { header } = useAppConfig()
   <UHeader>
     <template #logo>
       <template v-if="header?.logo?.dark || header?.logo?.light">
-        <img
-          src="/mascots/lion-logo.png"
-          class="h-12 w-12 rounded-full"
-        >
-        <UColorModeImage v-bind="{ class: 'h-12 w-auto', ...header?.logo }" />
+        <div class="flex items-center justify-center">
+          <img
+            src="/mascots/lion-logo.png"
+            class="h-12 w-12 rounded-full bg-cyan-900 mr-2"
+          >
+          <UColorModeImage v-bind="{ class: 'h-16 w-auto', ...header?.logo }" />
+        </div>
       </template>
       <template v-else>
         Matt Thompson

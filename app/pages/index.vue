@@ -19,12 +19,14 @@ useSeoMeta({
       align="right"
       class="p-4 md:p-8"
     >
-      <div class="m-4 p-4 bg-gradient-to-tr from-cyan-600 via-cyan-100 via-40% to-cyan-300  rounded-md">
-        <NuxtImg
-          provider="imagekit"
-          src="/Avatars/tr:w-500,h-500/portrait.png"
-          class="w-full aspect-square rounded-md"
-        />
+      <div class="flex flex-col items-center justify-center">
+        <div class="m-4 p-4 bg-gradient-to-tr from-cyan-600 via-cyan-100 via-40% to-cyan-300 rounded-md aspect-square w-[500px] h-[500px]">
+          <NuxtImg
+            provider="imagekit"
+            :src="page.hero.image"
+            class="w-full aspect-square rounded-md"
+          />
+        </div>
       </div>
     </UPageHero>
     <ULandingSection
