@@ -20,13 +20,24 @@ const { header } = useAppConfig()
           class="mb-0.5"
         />
       </template>
-    </template>
 
-    <div>
-      <ULink to="/blog">
-        <UButton v-bind="{ color: 'gray', variant: 'ghost', ...header?.home }" />
+      <ULink to="/about">
+        <UButton v-bind="{ color: 'gray', variant: 'solid' }">
+          About
+        </UButton>
       </ULink>
-    </div>
+      <ULink to="/contact">
+        <UButton v-bind="{ color: 'gray', variant: 'solid' }">
+          Contact
+        </UButton>
+      </ULink>
+
+      <ULink to="/toc">
+        <UButton v-bind="{ color: 'gray', variant: 'solid' }">
+          Blog
+        </UButton>
+      </ULink>
+    </template>
 
     <template
       v-if="header?.search"
