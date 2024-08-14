@@ -5,7 +5,6 @@ icon: i-heroicons-envelope-20-solid
 twitter_image: https://placehold.co/1200x630
 og_image: https://placehold.co/1200x630
 connections:
-  items:
   - title: 'LinkedIn - mthomps4'
     description: 'Connect and stay in touch!'
     icon: 'i-simple-icons-linkedin'

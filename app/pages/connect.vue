@@ -18,7 +18,7 @@ useSeoMeta({
     >
       <div class="grid grid-cols-1 gap-4 w-1/2 mx-auto">
         <ULandingCard
-          v-for="(item, index) of page?.connections?.items"
+          v-for="(item, index) of page.connections"
           :key="index"
           v-bind="item"
           orientation="horizontal"
