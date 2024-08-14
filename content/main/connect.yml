@@ -6,13 +6,6 @@ icon: i-heroicons-envelope-20-solid
 twitter_image: https://placehold.co/1200x630
 og_image: https://placehold.co/1200x630
 connections:
-  - title: 'LinkedIn - mthomps4'
-    description: 'Connect and stay in touch!'
-    icon: 'i-simple-icons-linkedin'
-    to: 'https://linkedin.com/in/mthomps4'
-    target: '_blank'
-    image: "/site/mascots/lion-linkedin.png"
-    aria-label: 'LinkedIN - Matt Thompson'
   - title: 'Twi...X - @mthomps4'
     description: "Watching tech twitterz"
     icon: 'i-simple-icons-x'
@@ -27,6 +20,13 @@ connections:
     target: '_blank'
     aria-label: '@mthomps4 on GitHub'
     image: "/site/mascots/lion-working-3.png"
+  - title: 'LinkedIn - mthomps4'
+    description: 'Connect and stay in touch!'
+    icon: 'i-simple-icons-linkedin'
+    to: 'https://linkedin.com/in/mthomps4'
+    target: '_blank'
+    image: "/site/mascots/lion-linkedin.png"
+    aria-label: 'LinkedIN - Matt Thompson'
   - title: 'Email - hey@mthomps4.com'
     description: "For those trying to limit social media."
     icon: 'i-heroicons-envelope-20-solid'
