@@ -6,13 +6,6 @@ icon: i-heroicons-envelope-20-solid
 twitter_image: https://placehold.co/1200x630
 og_image: https://placehold.co/1200x630
 connections:
-  - title: 'Twi...X - @mthomps4'
-    description: "Watching tech twitterz"
-    icon: 'i-simple-icons-x'
-    to: 'https://x.com/mthomsp4'
-    target: '_blank'
-    aria-label: '@mthomps4 on X'
-    image: "/site/mascots/lion-movie-popcorn.png"
   - title: 'GitHub - @mthomps4'
     description: 'Personal Playground. Real work behind Client NDA walls.'
     icon: 'i-simple-icons-github'
@@ -20,6 +13,13 @@ connections:
     target: '_blank'
     aria-label: '@mthomps4 on GitHub'
     image: "/site/mascots/lion-working-3.png"
+  - title: 'Twi...X - @mthomps4'
+    description: "Watching tech twitterz"
+    icon: 'i-simple-icons-x'
+    to: 'https://x.com/mthomps4'
+    target: '_blank'
+    aria-label: '@mthomps4 on X'
+    image: "/site/mascots/lion-movie-popcorn.png"
   - title: 'LinkedIn - mthomps4'
     description: 'Connect and stay in touch!'
     icon: 'i-simple-icons-linkedin'
