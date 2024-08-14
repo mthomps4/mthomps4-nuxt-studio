@@ -1,13 +1,23 @@
 title: Lets Connect!
 description: Stay in touch! I'm @mthomps4 most places.
+subtitle: Stay in touch! I'm
+subtitleTag: "@mthomps4"
+subtitleEnd: most places.
 navigation: false
 path: '/connect'
 icon: i-heroicons-envelope-20-solid
 twitter_image: https://placehold.co/1200x630
 og_image: https://placehold.co/1200x630
 connections:
+  - title: 'LinkedIn - mthomps4'
+    description: 'Connect and stay in touch!'
+    icon: 'i-simple-icons-linkedin'
+    to: 'https://linkedin.com/in/mthomps4'
+    target: '_blank'
+    image: "/site/mascots/lion-linkedin.png"
+    aria-label: 'LinkedIN - Matt Thompson'
   - title: 'GitHub - @mthomps4'
-    description: 'Personal Playground. Real work behind Client NDA walls.'
+    description: 'Personal Playground. Most work is hidden behind Client NDA walls.'
     icon: 'i-simple-icons-github'
     to: 'https://github.com/mthomps4'
     target: '_blank'
@@ -20,13 +30,6 @@ connections:
     target: '_blank'
     aria-label: '@mthomps4 on X'
     image: "/site/mascots/lion-movie-popcorn.png"
-  - title: 'LinkedIn - mthomps4'
-    description: 'Connect and stay in touch!'
-    icon: 'i-simple-icons-linkedin'
-    to: 'https://linkedin.com/in/mthomps4'
-    target: '_blank'
-    image: "/site/mascots/lion-linkedin.png"
-    aria-label: 'LinkedIN - Matt Thompson'
   - title: 'Email - hey@mthomps4.com'
     description: "For those trying to limit social media."
     icon: 'i-heroicons-envelope-20-solid'
@@ -34,3 +37,10 @@ connections:
     target: '_blank'
     aria-label: 'Email Matt Thompson'
     image: "/site/mascots/mail-pidgeon-cartoon.png"
+  - title: 'Instagram - @_mthomps4'
+    description: "All the random woodworking, gadgets, home renovations, and garage fun."
+    icon: 'i-heroicons-camera-20-solid'
+    to: 'https://www.instagram.com/_mthomps4'
+    target: '_blank'
+    aria-label: 'Instagram Matt Thompson'
+    image: "/site/mascots/lion-workbench.png"
