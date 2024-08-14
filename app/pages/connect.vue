@@ -12,24 +12,26 @@ useSeoMeta({
 
 <template>
   <UContainer>
-    <ULandingSection
+    <UPageBody
       :title="page.title"
       :description="page.description"
     >
-      <div class="grid grid-cols-1 gap-4 w-1/2 mx-auto">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-8 lg:w-1/2 mx-auto">
         <ULandingCard
           v-for="(item, index) in page.connections"
           :key="index"
           v-bind="item"
           orientation="horizontal"
         >
-          <NuxtImg
-            provider="imagekit"
-            :src="item.image"
-            class="aspect-square w-full"
-          />
+          <div class="lg:flex lg:justify-end lg:h-[200px]">
+            <NuxtImg
+              provider="imagekit"
+              :src="item.image"
+              class="aspect-square h-full"
+            />
+          </div>
         </ULandingCard>
       </div>
-    </ULandingSection>
+    </UPageBody>
   </UContainer>
 </template>
