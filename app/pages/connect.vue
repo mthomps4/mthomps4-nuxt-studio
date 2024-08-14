@@ -18,14 +18,14 @@ useSeoMeta({
     >
       <div class="grid grid-cols-1 gap-4 w-1/2 mx-auto">
         <ULandingCard
-          v-for="(item, index) of page.connections.items"
+          v-for="(item, index) of page?.connections?.items"
           :key="index"
           v-bind="item"
           orientation="horizontal"
         >
-          <p>I STOPPED HERE</p>
-          <NuxtImage
-            src="https://placehold.co/500x500"
+          <NuxtImg
+            provider="imagekit"
+            :src="item.image"
             class="aspect-square w-full"
           />
         </ULandingCard>

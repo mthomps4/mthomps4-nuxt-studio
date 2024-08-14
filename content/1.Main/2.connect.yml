@@ -6,31 +6,31 @@ twitter_image: https://placehold.co/1200x630
 og_image: https://placehold.co/1200x630
 connections:
   items:
-  - title: 'LinkedIn'
+  - title: 'LinkedIn - mthomps4'
     description: 'Connect and stay in touch!'
     icon: 'i-simple-icons-linkedin'
     to: 'https://linkedin.com/in/mthomps4'
     target: '_blank'
-    image: "/Avatars/portrait.png"
+    image: "/site/mascots/lion-linkedin.png"
     aria-label: 'LinkedIN - Matt Thompson'
-  - title: 'Twi...X'
+  - title: 'Twi...X - @mthomps4'
     description: "Watching tech twitterz"
     icon: 'i-simple-icons-x'
     to: 'https://x.com/mthomsp4'
     target: '_blank'
     aria-label: '@mthomps4 on X'
-    image: "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExN3ozZTF5MDU1dThuYmttYW9leHBvMDh2b2d5cHNkZHIydmpicmVxOSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/tFK8urY6XHj2w/giphy.gif"
-  - title: 'GitHub'
+    image: "/site/mascots/lion-movie-popcorn.png"
+  - title: 'GitHub - @mthomps4'
     description: 'Personal Playground. Real work behind Client NDA walls.'
     icon: 'i-simple-icons-github'
     to: 'https://github.com/mthomps4'
     target: '_blank'
     aria-label: '@mthomps4 on GitHub'
-    image: "/site/split-keys.jpg"
-  - title: 'Email'
-    description: "Hint: I'll likely see the others first"
+    image: "/site/mascots/lion-working-3.png"
+  - title: 'Email - hey@mthomps4.com'
+    description: "For those trying to limit social media."
     icon: 'i-heroicons-envelope-20-solid'
     to: 'mailto:hey@mthomps4.com'
     target: '_blank'
     aria-label: 'Email Matt Thompson'
-    image: "/site/split-keys.jpg"
+    image: "/site/mascots/mail-pidgeon-cartoon.png"

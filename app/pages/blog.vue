@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-// definePageMeta({
-//   layout: 'docs'
-// })
+definePageMeta({
+  layout: 'docs'
+})
 
 // useSeoMeta({
 //   title: page.value.title,
@@ -20,9 +20,10 @@
 <template>
   <UPage>
     <UPageHeader
-      headline="Page"
-      title="PageHeader"
-      description="A responsive header for your pages."
+      headline="Blog"
+      title="The Digital Forge"
+      description="The digital forge is a place where I share my thoughts and ideas on software development, technology, and other topics that interest me. I hope you find something useful here."
     />
+    <p>TODO: Main Blog Page</p>
   </UPage>
 </template>
