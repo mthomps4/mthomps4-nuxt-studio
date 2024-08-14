@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-const { data: page } = await useAsyncData('index', () => queryContent('/main/connect').findOne())
+const { data: page } = await useAsyncData('index', () => queryContent('/connect').findOne())
 
 useSeoMeta({
   titleTemplate: '',
