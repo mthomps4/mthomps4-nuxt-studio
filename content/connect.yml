@@ -1,6 +1,7 @@
 title: Lets Connect!
 description: Stay in touch! I'm @mthomps4 most places.
 navigation: false
+path: '/connect'
 icon: i-heroicons-envelope-20-solid
 twitter_image: https://placehold.co/1200x630
 og_image: https://placehold.co/1200x630

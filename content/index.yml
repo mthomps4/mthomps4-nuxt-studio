@@ -1,6 +1,7 @@
 title: 'Matt Thompson - About Me'
 description: "Software Architect by Day | Unplugged Engineer by Night"
 navigation: false
+path: '/about'
 hero:
   title: 'Matt Thompson'
   description: "Software Architect by Day | Unplugged Engineer by Night"
