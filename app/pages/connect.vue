@@ -28,11 +28,12 @@ useSeoMeta({
           v-bind="item"
           orientation="horizontal"
         >
-          <div class="lg:flex lg:justify-end lg:h-[200px]">
+          <div class="flex justify-center lg:justify-end lg:h-[200px]">
             <NuxtImg
               provider="imagekit"
               :src="item.image"
-              class="aspect-square h-full"
+              width="200"
+              height="200"
             />
           </div>
         </ULandingCard>
