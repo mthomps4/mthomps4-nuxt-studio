@@ -13,7 +13,7 @@ const { footer } = useAppConfig()
 
       <template v-if="footer?.links">
         <UButton
-          v-for="(link, index) of footer?.links"
+          v-for="(link, index) in footer?.links"
           :key="index"
           v-bind="{ color: 'gray', variant: 'ghost', ...link }"
         />

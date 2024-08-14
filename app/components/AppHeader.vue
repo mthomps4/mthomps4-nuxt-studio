@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { NavItem } from '@nuxt/content'
+import type { NavItem } from '@nuxt/content';
 
 const navigation = inject<NavItem[]>('navigation', [])
 
@@ -42,7 +42,7 @@ const { header } = useAppConfig()
       >
         <div class="hidden sm:block">
           <UButton
-            v-for="(link, index) of header.links"
+            v-for="(link, index) in header.links"
             :key="index"
             v-bind="{ color: 'gray', variant: 'ghost', ...link }"
           />

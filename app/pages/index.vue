@@ -31,7 +31,7 @@ useSeoMeta({
             {{ page.hero.subtitle }}
           </h2>
           <div
-            v-for="(item, index) of page.hero.summary"
+            v-for="(item, index) in page.hero.summary"
             :key="index"
           >
             <p class="my-2">
@@ -44,7 +44,7 @@ useSeoMeta({
     <ULandingSection :title="page.features.title">
       <ULandingGrid>
         <ULandingCard
-          v-for="(card, index) of page.features.cards"
+          v-for="(card, index) in page.features.cards"
           :key="index"
           v-bind="card"
           class="col-span-12 sm:col-span-6"
