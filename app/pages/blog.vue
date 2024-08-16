@@ -3,7 +3,7 @@ definePageMeta({
   layout: 'docs'
 })
 const route = useRoute()
-const { data: page } = await useAsyncData('connect', () => queryContent('main').where({ path: '/blog' }).findOne())
+const { data: page } = await useAsyncData('blog', () => queryContent('main').where({ path: '/blog' }).findOne())
 
 useSeoMeta({
   title: page.value.title,
