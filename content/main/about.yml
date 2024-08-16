@@ -1,10 +1,13 @@
-title: 'Matt Thompson - About Me'
-description: "Software Architect by Day | Unplugged Engineer by Night"
+title: 'Matt Thompson | Info'
+description: "Software Architect, Builder, and Mentor"
+og:
+  title: "Matt Thompson | AHHh"
+  description: "About Me Description"
 navigation: false
 path: '/about'
 hero:
   title: 'Matt Thompson'
-  description: "Software Architect by Day | Unplugged Engineer by Night"
+  description: "Software Architect, Builder, and Mentor"
   summary:
     - text: "I'm a builder and creator at heart."
     - text: "For over a decade, I've been immersed in the software consulting world, working across industries such as IP Advertising, Healthcare, Telecom, and E-Commerce. I've helped companies understand and solve complex problems while leading teams to drive progress. My primary focus is on solving the right problems and fostering team growth. No one should tackle this kind of work alone. I aim to share my understanding and pitfalls in hopes of building momentum."

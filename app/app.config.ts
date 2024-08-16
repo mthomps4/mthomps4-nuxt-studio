@@ -10,7 +10,12 @@ export default defineAppConfig({
     }
   },
   seo: {
-    siteName: 'Matt Thompson'
+    siteName: 'Matt Thompson',
+    applicationName: 'mthomps4-studio',
+    twitterCard: 'summary_large_image',
+    twitterImage: '/__og-image__/image/og.png',
+    ogImage: '/__og-image__/image/og.png',
+    ogUrl: process.env.NUXT_PUBLIC_SITE_URL || 'http://localhost:3000'
   },
   header: {
     logo: {

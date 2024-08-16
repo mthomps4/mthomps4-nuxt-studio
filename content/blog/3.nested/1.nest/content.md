@@ -1,6 +1,9 @@
 ---
 title: Content
 description: Nested content
+og:
+  title: "Content"
+  description: <p>Nested content</p>
 ---
 
 

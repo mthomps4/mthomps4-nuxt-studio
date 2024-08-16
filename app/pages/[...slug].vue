@@ -6,7 +6,7 @@ definePageMeta({
 })
 
 const route = useRoute()
-const { toc, seo } = useAppConfig()
+const { toc } = useAppConfig()
 
 const { data: page } = await useAsyncData(route.path, () => queryContent(route.path).findOne())
 if (!page.value) {
@@ -26,18 +26,18 @@ const { data: surround } = await useAsyncData(`${route.path}-surround`, () =>
 
 useSeoMeta({
   title: page.value.title,
-  ogTitle: `${page.value.title} - ${seo?.siteName}`,
   description: page.value.description,
+  ogTitle: page.value.title,
   ogDescription: page.value.description,
-  twitterImage: page.value.twitter_image,
-  ogImage: page.value.og_image
+  twitterTitle: page.value.title,
+  twitterDescription: page.value.description,
+  ogImage: `/__og-image__/image${route.path}/og.png`,
+  twitterImage: `/__og-image__/image${route.path}/og.png`
 })
 
-defineOgImage({
-  // component: 'Docs',
-  title: page.value.title,
-  alt: page.value.title,
-  description: page.value.description
+defineOgImageComponent('OgImageDocs', {
+  title: page.value.og.title,
+  description: page.value.og.description
 })
 
 const headline = computed(() => findPageHeadline(page.value))

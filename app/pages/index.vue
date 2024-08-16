@@ -1,12 +1,21 @@
 <script setup lang="ts">
+const route = useRoute()
 const { data: page } = await useAsyncData('about', () => queryContent('main').where({ path: '/about' }).findOne())
 
 useSeoMeta({
-  titleTemplate: '',
   title: page.value.title,
   description: page.value.description,
   ogTitle: page.value.title,
-  ogDescription: page.value.description
+  ogDescription: page.value.description,
+  twitterTitle: page.value.title,
+  twitterDescription: page.value.description,
+  ogImage: `/__og-image__/image${route.path}/og.png`,
+  twitterImage: `/__og-image__/image${route.path}/og.png`
+})
+
+defineOgImageComponent('OgImageDocs', {
+  title: page.value.og.title,
+  description: page.value.og.description
 })
 </script>
 

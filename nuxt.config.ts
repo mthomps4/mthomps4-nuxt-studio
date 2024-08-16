@@ -9,9 +9,19 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxt/ui',
     '@nuxthq/studio',
-    'nuxt-og-image'
+    'nuxt-og-image',
+    '@nuxtjs/seo'
   ],
-
+  site: {
+    url: process.env.NUXT_PUBLIC_SITE_URL || 'http://localhost:3000',
+    title: 'Matt Thompson',
+    name: 'Matt Thompson',
+    description: 'Software Architect, Builder, and Mentor',
+    defaultLocale: 'en'
+  },
+  ogImage: {
+    enabled: true
+  },
   hooks: {
     // Define `@nuxt/ui` components as global to use them in `.md` (feel free to add those you need)
     'components:extend': (components) => {

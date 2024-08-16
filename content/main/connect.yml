@@ -1,13 +1,14 @@
 title: Lets Connect!
 description: Stay in touch! I'm @mthomps4 most places.
+og:
+  title: "Lets Connect!"
+  description: <p>Stay in touch through various platforms. </p><p>I'm <span class="text-cyan-500 font-bold mx-2">@mthomps4</span> most places.</p>
 subtitle: Stay in touch! I'm
 subtitleTag: "@mthomps4"
 subtitleEnd: most places.
 navigation: false
 path: '/connect'
 icon: i-heroicons-envelope-20-solid
-twitter_image: https://placehold.co/1200x630
-og_image: https://placehold.co/1200x630
 connections:
   - title: 'LinkedIn - mthomps4'
     description: 'Connect and stay in touch!'

@@ -2,19 +2,24 @@
 definePageMeta({
   layout: 'docs'
 })
+const route = useRoute()
+const { data: page } = await useAsyncData('connect', () => queryContent('main').where({ path: '/blog' }).findOne())
 
-// useSeoMeta({
-//   title: page.value.title,
-//   ogTitle: `${page.value.title} - ${seo?.siteName}`,
-//   description: page.value.description,
-//   ogDescription: page.value.description
-// })
+useSeoMeta({
+  title: page.value.title,
+  description: page.value.description,
+  ogTitle: page.value.title,
+  ogDescription: page.value.description,
+  twitterTitle: page.value.title,
+  twitterDescription: page.value.description,
+  ogImage: `/__og-image__/image${route.path}/og.png`,
+  twitterImage: `/__og-image__/image${route.path}/og.png`
+})
 
-// defineOgImage({
-//   component: 'Docs',
-//   title: page.value.title,
-//   description: page.value.description
-// })
+defineOgImageComponent('OgImageDocs', {
+  title: page.value.og.title,
+  description: page.value.og.description
+})
 </script>
 
 <template>

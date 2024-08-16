@@ -17,12 +17,26 @@ useHead({
   }
 })
 
+defineOgImage({
+  component: 'Docs',
+  alt: 'Matt Thompson - Software Architect, Builder, and Mentor',
+  props: {
+    title: 'Matt Thompson',
+    description: 'Software Architect, Builder, and Mentor'
+  },
+  extension: 'png'
+})
+
 useSeoMeta({
   titleTemplate: `%s - ${seo?.siteName}`,
-  ogSiteName: seo?.siteName,
-  ogImage: 'https://docs-template.nuxt.dev/social-card.png',
-  twitterImage: 'https://docs-template.nuxt.dev/social-card.png',
-  twitterCard: 'summary_large_image'
+  applicationName: seo?.siteName,
+  ogSiteName: seo?.applicationName,
+  ogUrl: seo?.ogUrl,
+  ogImage: seo?.ogImage,
+  twitterImage: seo?.twitterImage,
+  twitterCard: 'summary_large_image',
+  twitterTitle: seo?.siteName,
+  twitterDescription: seo?.siteName
 })
 
 const links = [
@@ -45,7 +59,6 @@ provide('navigation', navigation)
 <template>
   <div class="bg-slate-50 dark:bg-slate-800">
     <NuxtLoadingIndicator />
-
     <AppHeader />
 
     <UMain>
