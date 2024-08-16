@@ -25,9 +25,9 @@ defineOgImageComponent('OgImageDocs', {
 <template>
   <UPage>
     <UPageHeader
-      headline="Blog"
-      title="The Digital Forge"
-      description="The digital forge is a place where I share my thoughts and ideas on software development, technology, and other topics that interest me. I hope you find something useful here."
+      :headline="page.headline"
+      :title="page.title"
+      :description="page.description"
     />
     <p>TODO: Main Blog Page</p>
   </UPage>

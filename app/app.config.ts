@@ -11,7 +11,7 @@ export default defineAppConfig({
   },
   seo: {
     siteName: 'Matt Thompson',
-    applicationName: 'mthomps4-studio',
+    applicationName: 'mthomps4- Matt Thompson',
     twitterCard: 'summary_large_image',
     twitterImage: '/__og-image__/image/og.png',
     ogImage: '/__og-image__/image/og.png',

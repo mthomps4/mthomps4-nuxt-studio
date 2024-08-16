@@ -49,6 +49,11 @@ const links = [
     label: 'Connect',
     to: '/connect',
     icon: 'i-heroicons-envelope-20-solid'
+  },
+  {
+    label: 'Blog',
+    to: '/blog',
+    icon: 'i-heroicons-document-20-solid'
   }
 ]
 
