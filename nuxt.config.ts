@@ -10,7 +10,8 @@ export default defineNuxtConfig({
     '@nuxt/ui',
     '@nuxthq/studio',
     'nuxt-og-image',
-    '@nuxtjs/seo'
+    '@nuxtjs/seo',
+    '@nuxtjs/mdc'
   ],
   site: {
     url: process.env.NUXT_PUBLIC_SITE_URL || 'http://localhost:3000',
