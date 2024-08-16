@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { NavItem } from '@nuxt/content';
+import type { NavItem } from '@nuxt/content'
 
 const navigation = inject<NavItem[]>('navigation', [])
 
@@ -12,7 +12,7 @@ const { header } = useAppConfig()
       <template v-if="header?.logo?.dark || header?.logo?.light">
         <div class="flex items-center justify-center">
           <img
-            src="/mascots/lion-logo.png"
+            src="/brand/lion-logo.png"
             class="h-12 w-12 rounded-full bg-cyan-900 mr-2"
           >
           <UColorModeImage v-bind="{ class: 'h-16 w-auto', ...header?.logo }" />
