@@ -50,7 +50,8 @@ const links = computed(() =>
       to: `${toc.bottom.edit}/${page?.value?._file}`,
       target: '_blank'
     },
-    ...(toc?.bottom?.links || [])
+    // ...(toc?.bottom?.links || []),
+    ...(page?.value?.toc?.bottom?.links || [])
   ].filter(Boolean)
 )
 </script>
@@ -97,7 +98,7 @@ const links = computed(() =>
             />
 
             <UPageLinks
-              :title="toc.bottom.title"
+              :title="page.toc?.bottom?.title"
               :links="links"
             />
           </div>

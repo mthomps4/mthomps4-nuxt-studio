@@ -6,8 +6,9 @@ const route = useRoute()
 const { data: page } = await useAsyncData('blog', () => queryContent('main').where({ path: '/blog' }).findOne())
 const { data: posts } = await useAsyncData('posts', () =>
   queryContent('blog')
-    .sort({ createdAt: -1 }) // Sort by creation date, descending
-    .limit(3) // Limit to the last 3 posts
+    .where({ tags: { $icontains: route.params.tag[0] } })
+    .sort({ publishedOn: -1 }) // Sort by creation date, descending
+    .limit(25)
     .find()
 )
 
@@ -26,6 +27,10 @@ defineOgImageComponent('OgImageDocs', {
   title: page.value.og.title,
   description: page.value.og.description
 })
+
+const tagHeader = computed(() => {
+  return `Posts tagged with "${route.params.tag[0]}"`
+})
 </script>
 
 <template>
@@ -35,12 +40,13 @@ defineOgImageComponent('OgImageDocs', {
       :title="page.title"
       :description="page.description"
     />
-    <h1> YOU STOPPED HERE </h1>
-    <ULandingSection
-      title="Latest Posts"
-      descriptions=""
-      class-name="my-8"
-    >
+    <section>
+      <h2 class="text-3xl font-bold mb-8">
+        {{ tagHeader }}
+      </h2>
+      <p v-if="posts.length === 0">
+        No Posts Found!
+      </p>
       <UBlogList orientation="horizontal">
         <ULink
           v-for="(post, index) in posts"
@@ -51,12 +57,13 @@ defineOgImageComponent('OgImageDocs', {
             <UBlogPost
               :title="post.title"
               :description="post.description"
-              :image="post.image.src"
-              :alt="post.image.alt"
+              :image="post?.image?.src"
+              :alt="post?.image?.alt"
+              :date="post.publishedOn"
             />
           </UCard>
         </ULink>
       </UBlogList>
-    </ULandingSection>
+    </section>
   </UPage>
 </template>
