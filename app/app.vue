@@ -66,7 +66,7 @@ provide('navigation', navigation)
     <NuxtLoadingIndicator />
     <AppHeader />
 
-    <UMain>
+    <UMain class="mb-10">
       <NuxtLayout>
         <NuxtPage />
       </NuxtLayout>

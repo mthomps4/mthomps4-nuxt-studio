@@ -4,6 +4,12 @@ definePageMeta({
 })
 const route = useRoute()
 const { data: page } = await useAsyncData('blog', () => queryContent('main').where({ path: '/blog' }).findOne())
+const { data: posts } = await useAsyncData('posts', () =>
+  queryContent('blog')
+    .sort({ createdAt: -1 }) // Sort by creation date, descending
+    .limit(3) // Limit to the last 3 posts
+    .find()
+)
 
 useSeoMeta({
   title: page.value.title,
@@ -29,6 +35,28 @@ defineOgImageComponent('OgImageDocs', {
       :title="page.title"
       :description="page.description"
     />
-    <p>TODO: Main Blog Page</p>
+    <h1> YOU STOPPED HERE </h1>
+    <ULandingSection
+      title="Latest Posts"
+      descriptions=""
+      class-name="my-8"
+    >
+      <UBlogList orientation="horizontal">
+        <ULink
+          v-for="(post, index) in posts"
+          :key="index"
+          :to="post.path"
+        >
+          <UCard>
+            <UBlogPost
+              :title="post.title"
+              :description="post.description"
+              :image="post.image.src"
+              :alt="post.image.alt"
+            />
+          </UCard>
+        </ULink>
+      </UBlogList>
+    </ULandingSection>
   </UPage>
 </template>

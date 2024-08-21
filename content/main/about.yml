@@ -29,7 +29,7 @@ features:
     - title: 'The Engineer'
       subtitle: 'The Digital Forge'
       description: "With over a decade of experience, join me as I navigate the highs and lows of software engineering. From getting \"Up and Running\" to delving into Leadership and Management, this space is for anyone intrigued by the world of tech."
-      icon: 'i-heroicons-book-open'
+      icon: 'i-heroicons-command-line'
       image: '/site/tr:w-500,h-500/split-key.jpg'
       to: '/blog'
     - title: 'The Craftsman'
