@@ -2,6 +2,14 @@
 const route = useRoute()
 const { data: aboutPage } = await useAsyncData('about', () => queryContent('main').where({ path: '/about' }).findOne())
 
+if (!aboutPage.value) {
+  throw createError({
+    statusCode: 404,
+    statusMessage: 'Page not found',
+    fatal: true
+  })
+}
+
 useSeoMeta({
   title: aboutPage.value.title,
   description: aboutPage.value.description,

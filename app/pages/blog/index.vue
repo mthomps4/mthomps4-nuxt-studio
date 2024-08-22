@@ -5,8 +5,18 @@ definePageMeta({
 const route = useRoute()
 const { data: page } = await useAsyncData('blog', () => queryContent('main').where({ path: '/blog' }).findOne())
 
-const limit = 3
-const pageNumber = parseInt(route.query.page) || 1
+if (!page || !page?.value) {
+  throw createError({
+    statusCode: 404,
+    statusMessage: 'Page not found',
+    fatal: true
+  })
+}
+
+const limit = 9
+const pageNumber = Array.isArray(route.query.page)
+  ? parseInt(route.query.page[0], 10) || 1
+  : parseInt(route.query.page, 10) || 1
 const skip = (pageNumber - 1) * limit
 
 const { data: posts } = await useAsyncData('posts', () =>
@@ -22,9 +32,7 @@ const { data: totalPosts } = await useAsyncData('totalPosts', async () => {
   return p.length
 })
 
-console.log({ pageNumber })
-
-const total = totalPosts.value
+const total = totalPosts?.value
 
 function updatePageNumber(newPageNumber) {
   window.location.href = `/blog?page=${newPageNumber}`
@@ -32,26 +40,25 @@ function updatePageNumber(newPageNumber) {
 }
 
 useSeoMeta({
-  title: page.value.title,
-  description: page.value.description,
-  ogTitle: page.value.title,
-  ogDescription: page.value.description,
-  twitterTitle: page.value.title,
-  twitterDescription: page.value.description,
+  title: page?.value.title,
+  description: page?.value.description,
+  ogTitle: page?.value.title,
+  ogDescription: page?.value.description,
+  twitterTitle: page?.value.title,
+  twitterDescription: page?.value.description,
   ogImage: `/__og-image__/image${route.path}/og.png`,
   twitterImage: `/__og-image__/image${route.path}/og.png`
 })
 
 defineOgImageComponent('OgImageDocs', {
-  title: page.value.og.title,
-  description: page.value.og.description
+  title: page?.value.og.title,
+  description: page?.value.og.description
 })
 </script>
 
 <template>
   <UPage>
     <UPageHeader
-      :headline="page.headline"
       :title="page.title"
       :description="page.description"
     />
@@ -71,20 +78,19 @@ defineOgImageComponent('OgImageDocs', {
               :description="post.description"
               :image="post?.image?.src"
               :alt="post?.image?.alt"
-              :date="post.publishedOn"
+              :date="post?.publishedOn"
             />
           </UCard>
         </ULink>
       </UBlogList>
-      <p class="my-10 font-bold">
-        YOU STOPPED HERE -- Style this pagination and then look to migrate ?tag to this page instead of another route
-      </p>
       <UPagination
         :model-value="pageNumber"
         :total="total"
         :page-count="limit"
         :skip="skip"
         :page="pageNumber"
+        size="sm"
+        class="flex justify-center items-center my-8"
         @update:model-value="updatePageNumber"
       />
     </section>
