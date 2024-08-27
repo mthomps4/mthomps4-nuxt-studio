@@ -37,7 +37,7 @@ export default defineNuxtConfig({
     highlight: {
       theme: 'one-dark-pro',
       langs: [
-        "graphql",
+        'graphql',
         'json',
         'yaml',
         'bash',

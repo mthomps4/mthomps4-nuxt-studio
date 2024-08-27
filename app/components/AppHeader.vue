@@ -59,11 +59,10 @@ const { header } = useAppConfig();
     </template>
     <template #bottom>
       <div class="sm:hidden flex justify-center items-center gap-4 border-t-[1px] border-b-0 border-cyan-700 shadow-xl">
-
         <UButton
-        v-for="(link, index) in header.links"
-        :key="index"
-        v-bind="{ color: 'gray', variant: 'ghost', ...link }"
+          v-for="(link, index) in header.links"
+          :key="index"
+          v-bind="{ color: 'gray', variant: 'ghost', ...link }"
         />
       </div>
     </template>
