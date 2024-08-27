@@ -1,41 +1,65 @@
 <script lang="ts" setup>
 definePageMeta({
   layout: 'docs'
-})
-const route = useRoute()
-const { data: page } = await useAsyncData('blog', () => queryContent('main').where({ path: '/blog' }).findOne())
+});
+const route = useRoute();
+const { data: page } = await useAsyncData('blog', () => queryContent('main').where({ path: '/blog' }).findOne());
 
 if (!page || !page?.value) {
   throw createError({
     statusCode: 404,
     statusMessage: 'Page not found',
     fatal: true
-  })
+  });
 }
 
-const limit = 9
+const limit = 9;
 const pageNumber = Array.isArray(route.query.page)
   ? parseInt(route.query.page[0], 10) || 1
-  : parseInt(route.query.page, 10) || 1
-const skip = (pageNumber - 1) * limit
+  : parseInt(route.query.page, 10) || 1;
+const skip = (pageNumber - 1) * limit;
+const tag = route.query.tag;
 
-const { data: posts } = await useAsyncData('posts', () =>
-  queryContent('blog')
+const { data: posts } = await useAsyncData('posts', () => {
+  const query = queryContent('blog')
+    .where({ isDir: { $ne: true } })
     .sort({ publishedOn: -1 }) // Sort by creation date, descending
     .limit(limit)
     .skip(skip)
-    .find()
-)
+
+  if (tag) {
+    query.where({ tags: { $contains: tag }, isDir: { $ne: true } });
+  }
+
+  return query.find()
+});
 
 const { data: totalPosts } = await useAsyncData('totalPosts', async () => {
-  const p = await queryContent('blog').find()
-  return p.length
-})
+  let q = queryContent('blog');
 
-const total = totalPosts?.value
+  if (tag) {
+    q = q.where({ tags: { $contains: tag } });
+  }
+
+  const p = await q.find();
+
+  return p.length;
+});
+
+const total = totalPosts?.value;
 
 function updatePageNumber(newPageNumber) {
-  window.location.href = `/blog?page=${newPageNumber}`
+  const searchParams = new URLSearchParams({ page: newPageNumber.toString() });
+
+  if (tag) {
+    if (Array.isArray(tag)) {
+      tag.forEach(t => searchParams.append('tag', t));
+    } else {
+      searchParams.append('tag', tag);
+    }
+  }
+
+  window.location.href = `/blog?${searchParams.toString()}`;
   // router.push({ force: true, query: { page: newPageNumber } }) // Updates the URL but doesn't reload the page
 }
 
@@ -48,12 +72,12 @@ useSeoMeta({
   twitterDescription: page?.value.description,
   ogImage: `/__og-image__/image${route.path}/og.png`,
   twitterImage: `/__og-image__/image${route.path}/og.png`
-})
+});
 
 defineOgImageComponent('OgImageDocs', {
   title: page?.value.og.title,
   description: page?.value.og.description
-})
+});
 </script>
 
 <template>
@@ -64,25 +88,42 @@ defineOgImageComponent('OgImageDocs', {
     />
     <section>
       <h2 class="text-3xl font-bold mb-8">
-        Latest Posts
+        Latest Posts <span className="text-lg" v-if="tag">#{{ tag }}</span>
       </h2>
-      <UBlogList orientation="horizontal">
+      <section class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
         <ULink
           v-for="(post, index) in posts"
           :key="index"
           :to="post.path"
         >
-          <UCard>
-            <UBlogPost
-              :title="post.title"
-              :description="post.description"
-              :image="post?.image?.src"
-              :alt="post?.image?.alt"
-              :date="post?.publishedOn"
-            />
+          <UCard class="max-h-[400px] group">
+            <div class="flex flex-col gap-y-4">
+              <div class="ring-1 ring-gray-200 dark:ring-gray-800 relative overflow-hidden aspect-[16/9] w-full rounded-lg pointer-events-none">
+                <NuxtImg :src="post?.image?.src" :alt="post?.image?.alt" class="object-cover object-top w-full h-full transform transition-transform duration-200 group-hover:scale-105" />
+              </div>
+              <div class="flex flex-col justify-between flex-1">
+                <div class="flex-1">
+                  <h3 class="text-gray-900 dark:text-white text-xl font-semibold truncate group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors duration-200">
+                    {{ post?.title }}
+                  </h3>
+                  <h4 v-if="post?.headline" class="text-cyan-600 text-sm font-bold my-2">
+                    Series: {{ post?.headline }}
+                  </h4>
+                  <p class="text-base text-gray-500 dark:text-gray-400 mt-1 line-clamp-3">
+                    {{ post?.description }}
+                  </p>
+                  <p class="text-right text-sm my-2 text-gray-500 dark:text-gray-400 font-medium pointer-events-none">
+                    {{ post?.publishedOn }}
+                  </p>
+                </div>
+              </div>
+            </div>
+            <p v-if="post?.tags" class="text-xs text-right text-gray-500">
+              {{ post?.tags?.map(tag => `#${tag}`).join(' ') }}
+            </p>
           </UCard>
         </ULink>
-      </UBlogList>
+        </section>
       <UPagination
         :model-value="pageNumber"
         :total="total"

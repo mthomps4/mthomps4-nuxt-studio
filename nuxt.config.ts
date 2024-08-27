@@ -26,15 +26,18 @@ export default defineNuxtConfig({
   hooks: {
     // Define `@nuxt/ui` components as global to use them in `.md` (feel free to add those you need)
     'components:extend': (components) => {
-      const globals = components.filter(c => ['UButton', 'UIcon'].includes(c.pascalName))
+      const globals = components.filter(c =>
+        ['UButton', 'UIcon'].includes(c.pascalName)
+      );
 
-      globals.forEach(c => (c.global = true))
+      globals.forEach(c => (c.global = true));
     }
   },
   content: {
     highlight: {
       theme: 'one-dark-pro',
       langs: [
+        "graphql",
         'json',
         'yaml',
         'bash',
@@ -72,7 +75,15 @@ export default defineNuxtConfig({
       ]
     },
     navigation: {
-      fields: ['title', 'description', 'navigation', 'path', 'icon', 'twitter_image', 'og_image']
+      fields: [
+        'title',
+        'description',
+        'navigation',
+        'path',
+        'icon',
+        'twitter_image',
+        'og_image'
+      ]
     }
   },
   image: {
@@ -82,6 +93,7 @@ export default defineNuxtConfig({
     }
   },
   ui: {
+    // @ts-expect-error - unknown icons key
     icons: ['heroicons', 'simple-icons']
   },
 
@@ -111,10 +123,16 @@ export default defineNuxtConfig({
     config: {
       stylistic: {
         commaDangle: 'never',
-        braceStyle: '1tbs'
+        braceStyle: '1tbs',
+        semi: true,
+        blockSpacing: true,
+        indent: 2,
+        quotes: 'single',
+        quoteProps: 'as-needed',
+        jsx: true
       }
     }
   },
 
   compatibilityDate: '2024-07-11'
-})
+});

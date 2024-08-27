@@ -1,13 +1,13 @@
 <script setup lang="ts">
-const route = useRoute()
-const { data: aboutPage } = await useAsyncData('about', () => queryContent('main').where({ path: '/about' }).findOne())
+const route = useRoute();
+const { data: aboutPage } = await useAsyncData('about', () => queryContent('main').where({ path: '/about' }).findOne());
 
 if (!aboutPage.value) {
   throw createError({
     statusCode: 404,
     statusMessage: 'Page not found',
     fatal: true
-  })
+  });
 }
 
 useSeoMeta({
@@ -19,12 +19,12 @@ useSeoMeta({
   twitterDescription: aboutPage.value.description,
   ogImage: `/__og-image__/image${route.path}/og.png`,
   twitterImage: `/__og-image__/image${route.path}/og.png`
-})
+});
 
 defineOgImageComponent('OgImageDocs', {
   title: aboutPage.value.og.title,
   description: aboutPage.value.og.description
-})
+});
 </script>
 
 <template>
