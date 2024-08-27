@@ -4,7 +4,7 @@ description: lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque
 og:
   title: "Content"
   description: <p>Nested content</p>
-path: '/blog/nested/nest/content'
+path: '/blog/_2020/nest/content'
 image:
   src: https://ik.imagekit.io/mthomps4/site/mascots/lion-working-3.png
   alt: Hand Plane
