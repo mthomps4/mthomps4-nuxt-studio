@@ -15,7 +15,6 @@ const navigation = inject<Ref<NavItem[]>>('navigation');
         <UNavigationTree
           :links="mapContentNavigation(navigation[0].children)"
           :default-open="true"
-          :multiple="false"
         />
       </section>
     </UPage>

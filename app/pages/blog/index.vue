@@ -87,7 +87,7 @@ defineOgImageComponent('OgImageDocs', {
       :description="page.description"
     />
     <section>
-      <h2 class="text-3xl font-bold mb-8">
+      <h2 class="text-3xl font-bold my-8">
         Latest Posts <span
           v-if="tag"
           className="text-lg"
@@ -99,7 +99,7 @@ defineOgImageComponent('OgImageDocs', {
           :key="index"
           :to="post.path"
         >
-          <UCard class="max-h-[400px] group">
+          <UCard class="group">
             <div class="flex flex-col gap-y-4">
               <div class="ring-1 ring-gray-200 dark:ring-gray-800 relative overflow-hidden aspect-[16/9] w-full rounded-lg pointer-events-none">
                 <NuxtImg

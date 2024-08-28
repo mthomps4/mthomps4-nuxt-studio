@@ -76,9 +76,9 @@ provide('navigation', navigation);
 
     <ClientOnly>
       <LazyUContentSearch
-        :files="files"
-        :navigation="navigation"
-        :links="links"
+      :files="files"
+      :navigation="navigation"
+      :links="links"
       />
     </ClientOnly>
 

@@ -1,9 +1,9 @@
-headline: Blog
-title: The Digital Forge
-description: The digital forge is a place where I share my thoughts and ideas on software development, technology, and other topics that interest me. I hope you find something useful here.
+headline: The Digital Forge
+title: Blog
+description: This is a place where I store my thoughts and ideas on software development, technology, and other topics that interest me. I hope you find something useful here.
 og:
-  title: The Digital Forge Blog
-  description: The digital forge is a place where I share my thoughts and ideas on software development, technology, and other topics that interest me. <p>I hope you find something useful here.</p>
+  title: Blog
+  description: This is a place where I store my thoughts and ideas on software development, technology, and other topics that interest me. <p>I hope you find something useful here.</p>
 navigation: false
-path: '/blog'
+path: "/blog"
 icon: i-heroicons-document-20-solid

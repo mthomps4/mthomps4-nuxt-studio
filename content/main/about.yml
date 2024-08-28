@@ -1,12 +1,12 @@
-title: 'Matt Thompson | Info'
+title: "Matt Thompson | Info"
 description: "Software Architect, Builder, and Mentor"
 og:
   title: "Matt Thompson | Info"
   description: "About Me Description"
 navigation: false
-path: '/about'
+path: "/about"
 hero:
-  title: 'Matt Thompson'
+  title: "Matt Thompson"
   description: "Software Architect, Builder, and Mentor"
   summary:
     - text: "I'm a builder and creator at heart."
@@ -15,26 +15,34 @@ hero:
     - text: "Beyond software, my passion extends into the physical world of fine woodworking, metalworking, and tool restoration. This pursuit is more than a hobby, it's a commitment to preserving and honing the craft. By collecting books, articles, and resources, I strive to share the knowledge and history I find, learning along the way. I aspire to absorb all I can and share the legacy of learning a craft with the next generation."
     - text: "Who knows? Maybe one day, I'll bridge the gap between traditional craftsmanship and modern technology in a unique pet project. (AI and Robotics, anyone?) Come along with me on this journey of learning, building, and creating in all sorts of ways."
   orientation: horizontal
-  image: '/Avatars/tr:w-500,h-500/portrait.png'
+  image: "/Avatars/tr:w-500,h-500/portrait.png"
   links:
     - label: Connect with me
       icon: i-heroicons-arrow-right-20-solid
       trailing: true
-      to: '/connect'
+      to: "/connect"
       size: xl
   subtitle: "About Me"
 features:
-  title: 'Follow Along...'
+  title: "Follow Along..."
   cards:
-    - title: 'The Engineer'
-      subtitle: 'The Digital Forge'
-      description: "With over a decade of experience, join me as I navigate the highs and lows of software engineering. From getting \"Up and Running\" to delving into Leadership and Management, this space is for anyone intrigued by the world of tech."
-      icon: 'i-heroicons-command-line'
-      image: '/site/tr:w-500,h-500/split-key.jpg'
-      to: '/blog'
-    - title: 'The Craftsman'
-      subtitle: 'The Armory'
-      image: '/site/tr:w-500,h-500/handplane.png'
+    - title: "The Engineer"
+      subtitle: "The Digital Forge"
+      description: 'With over a decade of experience, join me as I navigate the highs and lows of software engineering. From getting "Up and Running" to delving into Leadership and Management, this space is for anyone intrigued by the world of tech.'
+      icon: "i-heroicons-command-line"
+      image: "/site/tr:w-500,h-500/split-key.jpg"
+      # to: "/blog"
+      # links:
+      #   - label: Read More
+      #     to: "/blog"
+      #     icon: "i-heroicons-arrow-right-20-solid"
+    - title: "The Craftsman"
+      subtitle: "The Armory"
+      image: "/site/tr:w-500,h-500/handplane.png"
       description: "If you're drawn to the art of fine woodworking, design, and random shop projects, this is your spot. Join me as I share insights from my own journey, along with a growing collection of resources that inspire and guide my craft. Follow my hands-on adventure in creation and craftsmanship."
-      icon: 'i-heroicons-wrench-screwdriver'
-      to: '/blog'
+      icon: "i-heroicons-wrench-screwdriver"
+      # to: "/blog"
+      # links:
+      #   - label: Read More
+      #     to: "/blog"
+      #     icon: "i-heroicons-arrow-right-20-solid"

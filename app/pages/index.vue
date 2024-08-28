@@ -10,6 +10,8 @@ if (!aboutPage.value) {
   });
 }
 
+const aboutMe = aboutPage.value.hero.summary.map(item => item.text).join('\n\n');
+
 useSeoMeta({
   title: aboutPage.value.title,
   description: aboutPage.value.description,
@@ -28,53 +30,60 @@ defineOgImageComponent('OgImageDocs', {
 </script>
 
 <template>
+      <div class="lg:bg-[url('https://ik.imagekit.io/mthomps4/site/mascots/lion-side-light.png')]
+  bg-left-top bg-no-repeat bg-contain">
   <UContainer>
-    <UPageHero
-      :title="aboutPage.hero.title"
-      :description="aboutPage.hero.description"
-      :links="aboutPage.hero.links"
-      orientation="horizontal"
-      align="center"
-    />
-    <ULandingCard>
-      <section class="flex flex-col sm:flex-row items-center justify-center gap-12">
-        <NuxtImg
-          provider="imagekit"
-          :src="aboutPage.hero.image"
-          class="w-full sm:w-1/2 aspect-square rounded-md"
-        />
-        <div class="w-full sm:w-1/2">
-          <h2 class="font-bold text-xl">
-            {{ aboutPage.hero.subtitle }}
-          </h2>
-          <div
-            v-for="(item, index) in aboutPage.hero.summary"
-            :key="index"
-          >
-            <p class="my-2">
-              {{ item.text }}
-            </p>
-          </div>
-        </div>
-      </section>
-    </ULandingCard>
-    <section className="my-8">
-      <ULandingGrid>
-        <ULandingCard
-          v-for="(card, index) in aboutPage.features.cards"
-          :key="index"
-          v-bind="card"
-          class="col-span-12 sm:col-span-6"
-          :to="card.to"
-          orientation="horizontal"
+    <section>
+      <div class="hidden lg:block mx-auto w-3/4">
+        <UPageHero
+          :title="aboutPage.hero.title"
+          :description="aboutPage.hero.description"
+          :links="aboutPage.hero.links"
+          align="left"
         >
           <NuxtImg
             provider="imagekit"
-            :src="card.image"
-            class="w-full aspect-square rounded-md"
+            :src="aboutPage.hero.image"
+            class="w-[80%] aspect-square rounded-lg mx-auto"
           />
-        </ULandingCard>
-      </ULandingGrid>
-    </section>
+        </UPageHero>
+     </div>
+      <div class="lg:hidden">
+        <UPageHero
+          :title="aboutPage.hero.title"
+          :description="aboutPage.hero.description"
+          :links="aboutPage.hero.links"
+          align="center"
+        >
+        <NuxtImg
+          provider="imagekit"
+          :src="aboutPage.hero.image"
+          class="w-[80%] aspect-square rounded-lg mx-auto"
+        />
+      </UPageHero>
+    </div>
+  </section>
+    <ULandingCard
+      :title="aboutPage.hero.subtitle"
+      orientation="horizontal">
+      <template #description>
+        <div class="whitespace-pre-line">{{ aboutMe }}</div>
+      </template>
+    </ULandingCard>
+
+    <div class="my-4 sm:my-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
+      <ULandingCard
+        v-for="(card, index) in aboutPage.features.cards"
+        :key="index"
+        v-bind="card"
+      />
+    </div>
+
+    <div class="my-4 sm:my-8 flex justify-center">
+      <UButton to="/blog" icon="i-heroicons-arrow-right-20-solid" variant="solid" size="xl">
+        Read More
+      </UButton>
+    </div>
   </UContainer>
+  </div>
 </template>

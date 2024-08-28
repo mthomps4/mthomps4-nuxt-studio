@@ -4,7 +4,7 @@ description: How Ruby’s ClassMethods helped to create some solid GraphQL helpe
 og:
   title: "Metaprogramming Filters with Rails GraphQL"
   description: How Ruby’s ClassMethods helped to create some solid GraphQL helpers for filtering data.
-path: '/blog/_2022/metaprogramming-graphql-filters'
+path: '/blog/2022/metaprogramming-graphql-filters'
 image:
   src: "https://ik.imagekit.io/mthomps4/site/posts/metaprogramming-graphql-filters/featured.png"
   alt: Fox with goggles

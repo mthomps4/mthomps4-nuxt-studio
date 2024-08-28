@@ -18,17 +18,18 @@
     "@iconify-json/simple-icons": "^1.1.109",
     "@nuxt/content": "^2.13.2",
     "@nuxt/fonts": "^0.7.1",
-    "@nuxt/image": "^1.7.0",
-    "@nuxt/ui-pro": "^1.3.1"
+    "@nuxt/image": "^1.7.1",
+    "@nuxt/ui-pro": "^1.4.1"
   },
   "devDependencies": {
-    "@nuxt/eslint": "^0.5.2",
+    "@nuxt/devtools": "^1.4.1",
+    "@nuxt/eslint": "^0.5.3",
     "@nuxt/ui": "^2.18.4",
     "@nuxthq/studio": "^2.0.3",
-    "@nuxtjs/seo": "^2.0.0-rc.18",
+    "@nuxtjs/seo": "^2.0.0-rc.19",
     "eslint": "^8.57.0",
-    "nuxt": "^3.12.4",
-    "nuxt-og-image": "^3.0.0-rc.64",
+    "nuxt": "^3.13.0",
+    "nuxt-og-image": "^3.0.0-rc.65",
     "typescript": "^5.5.4",
     "vue-tsc": "^2.0.26"
   }
