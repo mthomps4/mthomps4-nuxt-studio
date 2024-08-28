@@ -1,65 +1,65 @@
 <script lang="ts" setup>
 definePageMeta({
   layout: 'docs'
-});
-const route = useRoute();
-const { data: page } = await useAsyncData('blog', () => queryContent('main').where({ path: '/blog' }).findOne());
+})
+const route = useRoute()
+const { data: page } = await useAsyncData('blog', () => queryContent('main').where({ path: '/blog' }).findOne())
 
 if (!page || !page?.value) {
   throw createError({
     statusCode: 404,
     statusMessage: 'Page not found',
     fatal: true
-  });
+  })
 }
 
-const limit = 9;
+const limit = 9
 const pageNumber = Array.isArray(route.query.page)
   ? parseInt(route.query.page[0], 10) || 1
-  : parseInt(route.query.page, 10) || 1;
-const skip = (pageNumber - 1) * limit;
-const tag = route.query.tag;
+  : parseInt(route.query.page, 10) || 1
+const skip = (pageNumber - 1) * limit
+const tag = route.query.tag
 
 const { data: posts } = await useAsyncData('posts', () => {
   const query = queryContent('blog')
     .where({ isDir: { $ne: true } })
     .sort({ publishedOn: -1 }) // Sort by creation date, descending
     .limit(limit)
-    .skip(skip);
+    .skip(skip)
 
   if (tag) {
-    query.where({ tags: { $contains: tag }, isDir: { $ne: true } });
+    query.where({ tags: { $contains: tag }, isDir: { $ne: true } })
   }
 
-  return query.find();
-});
+  return query.find()
+})
 
 const { data: totalPosts } = await useAsyncData('totalPosts', async () => {
-  let q = queryContent('blog');
+  let q = queryContent('blog')
 
   if (tag) {
-    q = q.where({ tags: { $contains: tag } });
+    q = q.where({ tags: { $contains: tag } })
   }
 
-  const p = await q.find();
+  const p = await q.find()
 
-  return p.length;
-});
+  return p.length
+})
 
-const total = totalPosts?.value;
+const total = totalPosts?.value
 
 function updatePageNumber(newPageNumber) {
-  const searchParams = new URLSearchParams({ page: newPageNumber.toString() });
+  const searchParams = new URLSearchParams({ page: newPageNumber.toString() })
 
   if (tag) {
     if (Array.isArray(tag)) {
-      tag.forEach(t => searchParams.append('tag', t));
+      tag.forEach(t => searchParams.append('tag', t))
     } else {
-      searchParams.append('tag', tag);
+      searchParams.append('tag', tag)
     }
   }
 
-  window.location.href = `/blog?${searchParams.toString()}`;
+  window.location.href = `/blog?${searchParams.toString()}`
   // router.push({ force: true, query: { page: newPageNumber } }) // Updates the URL but doesn't reload the page
 }
 
@@ -72,12 +72,12 @@ useSeoMeta({
   twitterDescription: page?.value.description,
   ogImage: `/__og-image__/image${route.path}/og.png`,
   twitterImage: `/__og-image__/image${route.path}/og.png`
-});
+})
 
 defineOgImageComponent('OgImageDocs', {
   title: page?.value.og.title,
   description: page?.value.og.description
-});
+})
 </script>
 
 <template>
