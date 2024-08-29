@@ -1,7 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   extends: ['@nuxt/ui-pro'],
-
   modules: [
     '@nuxt/content',
     '@nuxt/eslint',
@@ -26,53 +25,64 @@ export default defineNuxtConfig({
   hooks: {
     // Define `@nuxt/ui` components as global to use them in `.md` (feel free to add those you need)
     'components:extend': (components) => {
-      const globals = components.filter(c => ['UButton', 'UIcon'].includes(c.pascalName))
+      const globals = components.filter((c) =>
+        ['UButton', 'UIcon'].includes(c.pascalName)
+      )
 
-      globals.forEach(c => (c.global = true))
+      globals.forEach((c) => (c.global = true))
     }
   },
   content: {
     highlight: {
       theme: 'one-dark-pro',
       langs: [
-        'json',
-        'yaml',
         'bash',
-        'markdown',
-        'html',
-        'vue',
-        'ts',
-        'js',
-        'css',
-        'scss',
-        'less',
-        'stylus',
-        'go',
-        'java',
         'c',
         'cpp',
+        'css',
+        'elixir',
+        'go',
+        'graphql',
+        'html',
+        'html',
+        'java',
+        'js',
+        'json',
+        'jsx',
+        'less',
+        'markdown',
         'php',
         'python',
         'ruby',
-        'rust',
-        'sql',
-        'swift',
-        'toml',
-        'xml',
-        'html',
-        'vue',
-        'elixir',
         'ruby',
-        'jsx',
-        'tsx',
-        'typescript',
+        'rust',
+        'scss',
         'shell',
         'shellscript',
+        'sql',
+        'stylus',
+        'swift',
+        'toml',
+        'ts',
+        'tsx',
+        'typescript',
+        'vue',
+        'vue',
+        'xml',
+        'yaml',
         'zsh'
       ]
     },
     navigation: {
-      fields: ['title', 'description', 'navigation', 'path', 'icon', 'twitter_image', 'og_image']
+      fields: [
+        'title',
+        'description',
+        'navigation',
+        'path',
+        'icon',
+        'twitter_image',
+        'og_image'
+      ]
     }
   },
   image: {
@@ -84,37 +94,27 @@ export default defineNuxtConfig({
   ui: {
     icons: ['heroicons', 'simple-icons']
   },
-
   colorMode: {
     disableTransition: true
   },
-
   routeRules: {
     // Temporary workaround for prerender regression. see https://github.com/nuxt/nuxt/issues/27490
     '/': { prerender: true },
     '/api/search.json': { prerender: true }
   },
-
   devtools: {
     enabled: true
   },
-
   typescript: {
     strict: false
   },
-
   future: {
     compatibilityVersion: 4
   },
-
   eslint: {
     config: {
-      stylistic: {
-        commaDangle: 'never',
-        braceStyle: '1tbs'
-      }
+      stylistic: true
     }
   },
-
   compatibilityDate: '2024-07-11'
 })

@@ -27,6 +27,7 @@
     "@nuxt/eslint": "^0.3.13",
     "@nuxthq/studio": "^2.0.3",
     "@nuxtjs/seo": "^2.0.0-rc.18",
+    "@types/node": "^22.5.1",
     "eslint": "^9.9.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
