@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import type { ParsedContent } from '@nuxt/content';
+import type { ParsedContent } from '@nuxt/content'
 
-const { seo } = useAppConfig();
+const { seo } = useAppConfig()
 
-const { data: navigation } = await useAsyncData('navigation', () => fetchContentNavigation());
+const { data: navigation } = await useAsyncData('navigation', () => fetchContentNavigation())
 const { data: files } = useLazyFetch<ParsedContent[]>('/api/search.json', {
   default: () => [],
   server: false
-});
+})
 
 useHead({
   meta: [{ name: 'viewport', content: 'width=device-width, initial-scale=1' }],
@@ -15,7 +15,7 @@ useHead({
   htmlAttrs: {
     lang: 'en'
   }
-});
+})
 
 defineOgImage({
   component: 'Docs',
@@ -25,7 +25,7 @@ defineOgImage({
     description: 'Software Architect, Builder, and Mentor'
   },
   extension: 'png'
-});
+})
 
 useSeoMeta({
   titleTemplate: `%s - ${seo?.siteName}`,
@@ -37,7 +37,7 @@ useSeoMeta({
   twitterCard: 'summary_large_image',
   twitterTitle: seo?.siteName,
   twitterDescription: seo?.siteName
-});
+})
 
 const links = [
   {
@@ -55,10 +55,10 @@ const links = [
     to: '/blog',
     icon: 'i-heroicons-document-20-solid'
   }
-];
+]
 
-provide('files', files);
-provide('navigation', navigation);
+provide('files', files)
+provide('navigation', navigation)
 </script>
 
 <template>
@@ -76,9 +76,9 @@ provide('navigation', navigation);
 
     <ClientOnly>
       <LazyUContentSearch
-      :files="files"
-      :navigation="navigation"
-      :links="links"
+        :files="files"
+        :navigation="navigation"
+        :links="links"
       />
     </ClientOnly>
 

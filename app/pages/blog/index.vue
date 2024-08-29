@@ -53,7 +53,7 @@ function updatePageNumber(newPageNumber) {
 
   if (tag) {
     if (Array.isArray(tag)) {
-      tag.forEach(t => searchParams.append('tag', t))
+      tag.forEach((t) => searchParams.append('tag', t))
     } else {
       searchParams.append('tag', tag)
     }

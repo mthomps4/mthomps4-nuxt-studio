@@ -1,4 +1,4 @@
-import { serverQueryContent } from '#content/server';
+import { serverQueryContent } from '#content/server'
 
 export default eventHandler(async (event) => {
   return (
@@ -6,5 +6,5 @@ export default eventHandler(async (event) => {
       .where({ _type: 'markdown', navigation: { $ne: false } })
       // .where({ navigation: { $ne: false } })
       .find()
-  );
-});
+  )
+})
