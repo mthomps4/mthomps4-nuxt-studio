@@ -1,3 +1,11 @@
 {
-  "eslint.experimental.useFlatConfig": true
+  "eslint.useFlatConfig": true,
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.wordWrap": "on",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "always"
+  },
+  "editor.defaultFormatter": "dbaeumer.vscode-eslint",
 }

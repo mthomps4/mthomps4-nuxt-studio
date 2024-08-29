@@ -92,6 +92,7 @@ export default defineNuxtConfig({
     }
   },
   ui: {
+    // @ts-expect-error - icons not a key of ui
     icons: ['heroicons', 'simple-icons']
   },
   colorMode: {

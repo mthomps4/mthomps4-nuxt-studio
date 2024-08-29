@@ -3,7 +3,7 @@ title: Blog
 description: This is a place where I store my thoughts and ideas on software development, technology, and other topics that interest me. I hope you find something useful here.
 og:
   title: Blog
-  description: This is a place where I store my thoughts and ideas on software development, technology, and other topics that interest me. <p>I hope you find something useful here.</p>
+  description: This is a place where I store my thoughts and ideas on software development, technology, and other topics that interest me. \nI hope you find something useful here.
 navigation: false
 path: "/blog"
 icon: i-heroicons-document-20-solid

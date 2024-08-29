@@ -33,7 +33,6 @@
     "eslint-plugin-prettier": "^5.2.1",
     "nuxt": "^3.12.4",
     "nuxt-og-image": "^3.0.0-rc.64",
-    "prettier": "^3.3.3",
     "typescript": "^5.5.4",
     "vue-tsc": "^2.0.26"
   }

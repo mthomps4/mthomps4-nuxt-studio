@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/no-v-html -->
 <script lang="ts" setup>
 defineOptions({
   inheritAttrs: false
