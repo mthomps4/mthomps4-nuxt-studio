@@ -10,20 +10,24 @@ export default defineNuxtConfig({
     '@nuxthq/studio',
     'nuxt-og-image',
     '@nuxtjs/seo',
-    '@nuxtjs/mdc'
+    '@nuxtjs/mdc',
   ],
-  nitro: {
-    prerender: {
-      crawlLinks: true,
-      routes: ['/']
-    }
-  },
+  //   routeRules: {
+  //   // Temporary workaround for prerender regression. see https://github.com/nuxt/nuxt/issues/27490
+  //   '/': { prerender: true },
+  //   '/api/search.json': { prerender: true }
+  // },
   routeRules: {
-    '/api/**': { prerender: false },
-    '/__studio.json': { prerender: false }
+    '/': { prerender: true },
+    '/connect': { prerender: true },
+    '/blog': { prerender: true },
+    '/blog/**': { prerender: false },
+    '/api/**': { prerender: true },
+    '/api/search.json': { prerender: true },
+    '/__studio.json': { prerender: true },
   },
   app: {
-    baseURL: process.env.NUXT_PUBLIC_SITE_URL || 'http://localhost:3000',
+    baseURL: '/',
   },
   site: {
     baseUrl: process.env.NUXT_PUBLIC_SITE_URL || 'http://localhost:3000',
@@ -31,20 +35,20 @@ export default defineNuxtConfig({
     title: 'Matt Thompson',
     name: 'Matt Thompson',
     description: 'Software Architect, Builder, and Mentor',
-    defaultLocale: 'en'
+    defaultLocale: 'en',
   },
   ogImage: {
-    enabled: true
+    enabled: true,
   },
   hooks: {
     // Define `@nuxt/ui` components as global to use them in `.md` (feel free to add those you need)
     'components:extend': (components) => {
-      const globals = components.filter((c) =>
-        ['UButton', 'UIcon'].includes(c.pascalName)
+      const globals = components.filter(c =>
+        ['UButton', 'UIcon'].includes(c.pascalName),
       )
 
-      globals.forEach((c) => (c.global = true))
-    }
+      globals.forEach(c => (c.global = true))
+    },
   },
   content: {
     highlight: {
@@ -84,8 +88,8 @@ export default defineNuxtConfig({
         'vue',
         'xml',
         'yaml',
-        'zsh'
-      ]
+        'zsh',
+      ],
     },
     navigation: {
       fields: [
@@ -95,41 +99,36 @@ export default defineNuxtConfig({
         'path',
         'icon',
         'twitter_image',
-        'og_image'
-      ]
-    }
+        'og_image',
+      ],
+    },
   },
   image: {
     inject: true,
     imagekit: {
-      baseURL: 'https://ik.imagekit.io/mthomps4/'
-    }
+      baseURL: 'https://ik.imagekit.io/mthomps4/',
+    },
   },
   ui: {
     // @ts-expect-error - icons not a key of ui
-    icons: ['heroicons', 'simple-icons']
+    icons: ['heroicons', 'simple-icons'],
   },
   colorMode: {
-    disableTransition: true
-  },
-  routeRules: {
-    // Temporary workaround for prerender regression. see https://github.com/nuxt/nuxt/issues/27490
-    '/': { prerender: true },
-    '/api/search.json': { prerender: true }
+    disableTransition: true,
   },
   devtools: {
-    enabled: true
+    enabled: true,
   },
   typescript: {
-    strict: false
+    strict: false,
   },
   future: {
-    compatibilityVersion: 4
+    compatibilityVersion: 4,
   },
   eslint: {
     config: {
-      stylistic: true
-    }
+      stylistic: true,
+    },
   },
-  compatibilityDate: '2024-07-11'
+  compatibilityDate: '2024-07-11',
 })
