@@ -12,6 +12,16 @@ export default defineNuxtConfig({
     '@nuxtjs/seo',
     '@nuxtjs/mdc'
   ],
+  nitro: {
+    prerender: {
+      crawlLinks: true,
+      routes: ['/']
+    }
+  },
+  routeRules: {
+    '/api/**': { prerender: false },
+    '/__studio.json': { prerender: false }
+  },
   app: {
     baseURL: process.env.NUXT_PUBLIC_SITE_URL || 'http://localhost:3000',
   },
