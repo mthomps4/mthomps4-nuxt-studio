@@ -12,7 +12,11 @@ export default defineNuxtConfig({
     '@nuxtjs/seo',
     '@nuxtjs/mdc'
   ],
+  app: {
+    baseURL: process.env.NUXT_PUBLIC_SITE_URL || 'http://localhost:3000',
+  },
   site: {
+    baseUrl: process.env.NUXT_PUBLIC_SITE_URL || 'http://localhost:3000',
     url: process.env.NUXT_PUBLIC_SITE_URL || 'http://localhost:3000',
     title: 'Matt Thompson',
     name: 'Matt Thompson',
