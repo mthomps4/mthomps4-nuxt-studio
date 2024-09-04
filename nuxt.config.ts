@@ -18,7 +18,7 @@ export default defineNuxtConfig({
   //   '/api/search.json': { prerender: true }
   // },
   routeRules: {
-    '/**', { prerender: true },
+    '/**': { prerender: true },
     '/': { prerender: true },
     '/connect': { prerender: true },
     '/blog': { prerender: false },
