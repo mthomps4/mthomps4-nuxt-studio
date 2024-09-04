@@ -18,7 +18,7 @@ const pageNumber = Array.isArray(route.query.page)
   ? parseInt(route.query.page[0], 10) || 1
   : parseInt(route.query.page, 10) || 1
 const skip = (pageNumber - 1) * limit
-const tag = route.query.tag
+const tag = Array.isArray(route?.query?.tag) ? route.query.tag[0] : route?.query?.tag
 
 const { data: posts } = await useAsyncData('posts', () => {
   const query = queryContent('blog')
@@ -32,7 +32,7 @@ const { data: posts } = await useAsyncData('posts', () => {
   }
 
   return query.find()
-})
+}, { watch: [() => route.query.tag, () => route.query.page] })
 
 const { data: totalPosts } = await useAsyncData('totalPosts', async () => {
   let q = queryContent('blog')
@@ -44,7 +44,7 @@ const { data: totalPosts } = await useAsyncData('totalPosts', async () => {
   const p = await q.find()
 
   return p.length
-})
+}, { watch: [() => route.query.tag, () => route.query.page] })
 
 const total = totalPosts?.value
 
@@ -62,6 +62,8 @@ function updatePageNumber(newPageNumber) {
   window.location.href = `/blog?${searchParams.toString()}`
   // router.push({ force: true, query: { page: newPageNumber } }) // Updates the URL but doesn't reload the page
 }
+
+const viewAllUrl = process.env.NODE_ENV === 'production' ? 'https://www.mthomps4.com/blog' : 'http://localhost:3000/blog'
 
 useSeoMeta({
   title: page?.value.title,
@@ -82,11 +84,26 @@ defineOgImageComponent('OgImageDocs', {
 
 <template>
   <UPage>
-    <UPageHeader
-      :title="page.title"
-      :description="page.description"
-    />
+    <ULandingCard
+        orientation="horizontal"
+        class="my-10"
+      >
+      <template #title>
+        <h1 class="text-3xl font-bold my-8">{{ page.title }}</h1>
+      </template>
+        <template #description>
+          <div class="whitespace-pre-line">
+            {{ page.description }}
+          </div>
+        </template>
+      </ULandingCard>
     <section>
+      <a v-if="tag" :href="viewAllUrl">
+        <UButton>
+          <UIcon name="i-heroicons-arrow-left-20-solid" class="w-4 h-4" />
+          View all posts
+        </UButton>
+      </a>
       <h2 class="text-3xl font-bold my-8">
         Latest Posts <span
           v-if="tag"

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { NavItem } from '@nuxt/content'
+import type { NavItem } from '@nuxt/content';
 
 const navigation = inject<NavItem[]>('navigation', [])
 

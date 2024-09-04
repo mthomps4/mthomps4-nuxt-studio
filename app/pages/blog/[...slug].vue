@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { withoutTrailingSlash } from 'ufo'
+import { withoutTrailingSlash } from 'ufo';
 
 definePageMeta({
   layout: 'docs'
