@@ -23,8 +23,8 @@ export default defineNuxtConfig({
     '/blog': { isr: 60 },
     '/blog/**': { isr: 60 },
     '/api/**': { isr: 60 },
-    '/api/search.json': { isr: 60 },
-    '/__studio.json': { isr: 60 },
+    '/api/search.json': { prerender: true },
+    '/__studio.json': { prerender: true },
   },
   app: {
     baseURL: '/',
