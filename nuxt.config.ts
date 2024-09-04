@@ -20,9 +20,9 @@ export default defineNuxtConfig({
   routeRules: {
     '/': { prerender: true },
     '/connect': { prerender: true },
-    '/blog': { isr: 60 },
-    '/blog/**': { isr: 60 },
-    '/api/**': { isr: 60 },
+    '/blog': { swr: 60 },
+    '/blog/**': {swr: 60 },
+    '/api/**': { swr: 60 },
     '/api/search.json': { prerender: true },
     '/__studio.json': { prerender: true },
   },
