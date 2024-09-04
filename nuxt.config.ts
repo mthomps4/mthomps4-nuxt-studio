@@ -20,11 +20,11 @@ export default defineNuxtConfig({
   routeRules: {
     '/': { prerender: true },
     '/connect': { prerender: true },
-    '/blog': { isr: false },
-    '/blog/**': { isr: false },
-    '/api/**': { isr: true },
-    '/api/search.json': { isr: true },
-    '/__studio.json': { isr: true },
+    '/blog': { isr: 60 },
+    '/blog/**': { isr: 60 },
+    '/api/**': { isr: 60 },
+    '/api/search.json': { isr: 60 },
+    '/__studio.json': { isr: 60 },
   },
   app: {
     baseURL: '/',
