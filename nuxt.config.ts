@@ -17,16 +17,16 @@ export default defineNuxtConfig({
   //   '/': { prerender: true },
   //   '/api/search.json': { prerender: true }
   // },
-  routeRules: {
-    '/**': { prerender: true },
-    '/': { prerender: true },
-    '/connect': { prerender: true },
-    '/blog': { prerender: false },
+  // routeRules: {
+    //,'/**': { prerender: true },
+    // '/': { prerender: true },
+    // '/connect': { prerender: true },
+    // '/blog': { prerender: false },
     // '/blog/**': { ssr: false },
-    '/api/**': { prerender: true },
-    '/api/search.json': { prerender: true },
-    '/__studio.json': { prerender: true },
-  },
+    // '/api/**': { prerender: true },
+    // '/api/search.json': { prerender: true },
+    // '/__studio.json': { prerender: true },
+  // },
   app: {
     baseURL: '/',
   },
