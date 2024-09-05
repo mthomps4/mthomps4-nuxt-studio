@@ -12,21 +12,16 @@ export default defineNuxtConfig({
     '@nuxtjs/seo',
     '@nuxtjs/mdc',
   ],
-  //   routeRules: {
-  //   // Temporary workaround for prerender regression. see https://github.com/nuxt/nuxt/issues/27490
-  //   '/': { prerender: true },
-  //   '/api/search.json': { prerender: true }
-  // },
-  // routeRules: {
-    //,'/**': { prerender: true },
-    // '/': { prerender: true },
-    // '/connect': { prerender: true },
-    // '/blog': { prerender: false },
-    // '/blog/**': { ssr: false },
-    // '/api/**': { prerender: true },
-    // '/api/search.json': { prerender: true },
-    // '/__studio.json': { prerender: true },
-  // },
+  routeRules: {
+    '/**': { prerender: true },
+    '/': { prerender: true },
+    '/connect': { prerender: true },
+    '/blog': { swr: 3600, prerender: true },
+    '/blog/**': { swr: 3600, prerender: true },
+    '/api/**': { prerender: true },
+    '/api/search.json': { prerender: true },
+    '/__studio.json': { prerender: true },
+  },
   app: {
     baseURL: '/',
   },
