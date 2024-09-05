@@ -6,6 +6,7 @@
     "build": "nuxt build",
     "start": "node .output/server/index.mjs start",
     "dev": "NODE_OPTIONS='--no-warnings' nuxt dev",
+    "inspect": "node --inspect node_modules/.bin/nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
