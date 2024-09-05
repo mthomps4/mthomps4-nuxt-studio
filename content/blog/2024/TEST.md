@@ -1,5 +1,6 @@
 ---
-isDraft: true,
+draft: true,
+_draft: true,
 title: TESTING
 description: Brrrr
 image:
