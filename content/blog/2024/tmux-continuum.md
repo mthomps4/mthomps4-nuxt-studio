@@ -1,21 +1,22 @@
 ---
-title:  Restore tmux sessions with tmux-continuum
+title: Restore tmux sessions with tmux-continuum
 description: Learn how to save your tmux sessions with tmux-continuum.
 og:
-  title:  Restore tmux sessions with tmux-continuum
+  title: Restore tmux sessions with tmux-continuum
   description: Learn how to save your tmux sessions with tmux-continuum.
-path: '/blog/2024/tmux-continuum'
+path: /blog/2024/tmux-continuum
 image:
   src: https://ik.imagekit.io/mthomps4/site/posts/tmux-continiuum/featured.jpeg
   alt: og-image
-publishedOn: "2024-06-12"
-tags: ["tmux"]
+publishedOn: '2024-06-12'
+tags:
+  - tmux
 organization:
   name: Typecraft
   site: https://learn.typecraft.com
 ---
 
-<img src="https://ik.imagekit.io/mthomps4/site/posts/tmux-continiuum/featured.jpeg" alt="featured.png" class="featured-image">
+![featured.png](https://ik.imagekit.io/mthomps4/site/posts/tmux-continiuum/featured.jpeg){.featured-image}
 
 ## Overview
 
