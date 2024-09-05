@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 definePageMeta({
-  layout: 'docs'
+  layout: 'docs',
 })
 const route = useRoute()
 const { data: page } = await useAsyncData('blog', () => queryContent('main').where({ path: '/blog' }).findOne())
@@ -9,7 +9,7 @@ if (!page || !page?.value) {
   throw createError({
     statusCode: 404,
     statusMessage: 'Page not found',
-    fatal: true
+    fatal: true,
   })
 }
 
@@ -32,7 +32,7 @@ const { data: posts } = await useAsyncData('posts', () => {
   }
 
   return query.find()
-}, { watch: [() => route.query.tag, () => route.query.page] })
+})
 
 const { data: totalPosts } = await useAsyncData('totalPosts', async () => {
   let q = queryContent('blog')
@@ -44,7 +44,7 @@ const { data: totalPosts } = await useAsyncData('totalPosts', async () => {
   const p = await q.find()
 
   return p.length
-}, { watch: [() => route.query.tag, () => route.query.page] })
+})
 
 const total = totalPosts?.value
 
@@ -53,8 +53,9 @@ function updatePageNumber(newPageNumber) {
 
   if (tag) {
     if (Array.isArray(tag)) {
-      tag.forEach((t) => searchParams.append('tag', t))
-    } else {
+      tag.forEach(t => searchParams.append('tag', t))
+    }
+    else {
       searchParams.append('tag', tag)
     }
   }
@@ -73,34 +74,42 @@ useSeoMeta({
   twitterTitle: page?.value.title,
   twitterDescription: page?.value.description,
   ogImage: `/__og-image__/image${route.path}/og.png`,
-  twitterImage: `/__og-image__/image${route.path}/og.png`
+  twitterImage: `/__og-image__/image${route.path}/og.png`,
 })
 
 defineOgImageComponent('OgImageDocs', {
   title: page?.value.og.title,
-  description: page?.value.og.description
+  description: page?.value.og.description,
 })
 </script>
 
 <template>
   <UPage>
     <ULandingCard
-        orientation="horizontal"
-        class="my-10"
-      >
+      orientation="horizontal"
+      class="my-10"
+    >
       <template #title>
-        <h1 class="text-3xl font-bold my-8">{{ page.title }}</h1>
+        <h1 class="text-3xl font-bold my-8">
+          {{ page.title }}
+        </h1>
       </template>
-        <template #description>
-          <div class="whitespace-pre-line">
-            {{ page.description }}
-          </div>
-        </template>
-      </ULandingCard>
+      <template #description>
+        <div class="whitespace-pre-line">
+          {{ page.description }}
+        </div>
+      </template>
+    </ULandingCard>
     <section>
-      <a v-if="tag" :href="viewAllUrl">
+      <a
+        v-if="tag"
+        :href="viewAllUrl"
+      >
         <UButton>
-          <UIcon name="i-heroicons-arrow-left-20-solid" class="w-4 h-4" />
+          <UIcon
+            name="i-heroicons-arrow-left-20-solid"
+            class="w-4 h-4"
+          />
           View all posts
         </UButton>
       </a>

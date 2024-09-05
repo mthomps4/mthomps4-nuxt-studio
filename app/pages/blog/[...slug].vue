@@ -1,31 +1,31 @@
 <script setup lang="ts">
-import { withoutTrailingSlash } from 'ufo';
+import { withoutTrailingSlash } from 'ufo'
 
 definePageMeta({
-  layout: 'docs'
+  layout: 'docs',
 })
 
 const route = useRoute()
 const { toc } = useAppConfig()
 
-const { data: page } = await useAsyncData(route.path, () =>
-  queryContent(route.path).findOne()
-)
+const { data: page } = await useAsyncData(route.path, () => {
+  return queryContent(route.path).findOne()
+})
 
 if (!page.value) {
   throw createError({
     statusCode: 404,
     statusMessage: 'Page not found',
-    fatal: true
+    fatal: true,
   })
 }
 
-const { data: surround } = await useAsyncData(`${route.path}-surround`, () =>
-  queryContent()
+const { data: surround } = await useAsyncData(`${route.path}-surround`, () => {
+  return queryContent()
     .where({ _extension: 'md', navigation: { $ne: false } })
     .only(['title', 'description', '_path'])
     .findSurround(withoutTrailingSlash(route.path))
-)
+})
 
 useSeoMeta({
   title: page.value.title,
@@ -35,12 +35,12 @@ useSeoMeta({
   twitterTitle: page.value.title,
   twitterDescription: page.value.description,
   ogImage: `/__og-image__/image${route.path}/og.png`,
-  twitterImage: `/__og-image__/image${route.path}/og.png`
+  twitterImage: `/__og-image__/image${route.path}/og.png`,
 })
 
 defineOgImageComponent('OgImageDocs', {
   title: page.value.og.title,
-  description: page.value.og.description
+  description: page.value.og.description,
 })
 
 // const headline = computed(() => findPageHeadline(page.value));
