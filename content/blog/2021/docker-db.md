@@ -1,27 +1,44 @@
-# Docker DB
+---
+title: Docker DB
+description: Learn how to set multiple versions of databases easily with Docker.
+og:
+  title: Docker DB
+  description: Learn how to set multiple versions of databases easily with Docker.
+path: '/blog/2021/docker-db'
+image:
+  src: "https://ik.imagekit.io/mthomps4/site/posts/docker-db/PBC_1.png"
+  alt: og-image
+publishedOn: "2021-04-15"
+tags: ["Docker", "Databases"]
+organization:
+  name: Echobind
+  site: "https://echobind.com"
+---
 
-# The Problem...
+<img src="https://ik.imagekit.io/mthomps4/site/posts/docker-db/PBC_1.png" alt="featured.png" class="featured-image">
 
-Developer environments can be a tedious process, even more so at an agency. You spend 2 days getting Client A's secret sauce of a config rolling, only to need Client B's config later in the week. While you are typically at the liberty of their setup, a few things can still be in your control. e.g. Tooling. 
+## The Problem
 
-Over the past couple of months, I've had clients needing versions of databases across the board. Typically, we don't think of it. Install this version, switch to that, run for a while.... rinse, and repeat. But what happens when you need to adapt quickly? What happens when Mac updates are pushed and brew installs break? ***Big Sur*** anyone? **The issue, as much as we try to stay consistent in our setup, it's almost impossible when we continue to patch and reconfigure. We've come a long way in terms of language versioning, but not much has been said in terms of databases. 
+Developer environments can be a tedious process, even more so at an agency. You spend 2 days getting Client A's secret sauce of a config rolling, only to need Client B's config later in the week. While you are typically at the liberty of their setup, a few things can still be in your control. e.g. Tooling.
+
+Over the past couple of months, I've had clients needing versions of databases across the board. Typically, we don't think of it. Install this version, switch to that, run for a while.... rinse, and repeat. But what happens when you need to adapt quickly? What happens when Mac updates are pushed and brew installs break? ***Big Sur*** anyone? **The issue, as much as we try to stay consistent in our setup, it's almost impossible when we continue to patch and reconfigure. We've come a long way in terms of language versioning, but not much has been said in terms of databases.
 
 It seems like something was made just for this... hmm... what was it.
 
 ****a wild dockerfile appears!***
 
-![Docker%20DB%202a9c297434334b3bb42a0fbb83c58c9c/PBC_1.png](Docker%20DB%202a9c297434334b3bb42a0fbb83c58c9c/PBC_1.png)
+![PBC_1.png](https://ik.imagekit.io/mthomps4/site/posts/docker-db/PBC_1.png)
 
 *Credit: Kim Wikes via [http://www.pokemonbattlecreator.com/](http://www.pokemonbattlecreator.com/)*
 
 Below is an exported README from my current docker setup for database versioning.
 
-Feel free to clone and follow along in exploring this *probably over-engineered* setup. 
+Feel free to clone and follow along in exploring this *probably over-engineered* setup.
 
 > *Automation is good! More must be better!*
-> 
+>
 
-**Source Repo:** 
+**Source Repo:**
 
 [https://github.com/mthomps4/docker-compose-db](https://github.com/mthomps4/docker-compose-db)
 
@@ -86,7 +103,7 @@ MySQL8      | 2021-01-08T17:37:28.188065Z 0 [System] [MY-010931] [Server] /usr/s
 You’ll notice here - our other DBs have “exited” with a code of 0 – ie. They were never started. MySQL 8 is *ready for connections* on *port: 3308*
 
 > Side Note: Currently each DB port is hardcoded in the docker-compose file. If another port is needed, swap these out in the command: and ports: section, I’ll look to make a quick follow with ENVs for these as well.
-> 
+>
 
 ## Connecting via DB Viewer
 
@@ -94,17 +111,17 @@ This is no different than running a DB locally. Your config will still look simi
 
 Config:
 
-![Docker%20DB%202a9c297434334b3bb42a0fbb83c58c9c/db-viewer-config.png](Docker%20DB%202a9c297434334b3bb42a0fbb83c58c9c/db-viewer-config.png)
+![Docker%20DB%202a9c297434334b3bb42a0fbb83c58c9c/db-viewer-config.png](https://ik.imagekit.io/mthomps4/site/posts/docker-db/db-viewer-config.png)
 
 Connected View:
 
-![Docker%20DB%202a9c297434334b3bb42a0fbb83c58c9c/connected-dbs.png](Docker%20DB%202a9c297434334b3bb42a0fbb83c58c9c/connected-dbs.png)
+![Docker%20DB%202a9c297434334b3bb42a0fbb83c58c9c/connected-dbs.png](https://ik.imagekit.io/mthomps4/site/posts/docker-db/connected-dbs.png)
 
 ## Next Steps
 
-**Do I really need to `cd` into another project for all of this?!** 
+**Do I really need to `cd` into another project for all of this?!**
 
-Nope! 
+Nope!
 
 Thanks to docker we can build some nice alias commands with the `-f` command.
 

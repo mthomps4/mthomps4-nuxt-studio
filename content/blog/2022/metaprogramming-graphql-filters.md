@@ -10,6 +10,9 @@ image:
   alt: Fox with goggles
 publishedOn: "2022-12-08"
 tags: ["Metaprogramming", "Rails", "GraphQL"]
+organization:
+  name: Echobind
+  site: https://echobind.com
 ---
 
 <img src="https://ik.imagekit.io/mthomps4/site/posts/metaprogramming-graphql-filters/featured.png" alt="featured.png" class="featured-image">

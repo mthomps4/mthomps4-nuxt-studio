@@ -1,32 +1,41 @@
-# Playwright w/ Next-Auth and Prisma
+---
+title: Playwright with Next-Auth and Prisma
+description: Today, I wanted to go over how to quickly configure Playwright with Next-Auth… There are many options, but the most exciting for me is the ability to save our user sessions into a storageState for multiple user roles and re-use them in our specs.
+og:
+  title: Playwright with Next-Auth and Prisma
+  description: Brew some coffee and lets dive in
+path: '/blog/2022/playwright-with-next-auth'
+image:
+  src: https://ik.imagekit.io/mthomps4/site/posts/playwright-w-nextauth/two-masks.png
+  alt: og-image
+publishedOn: "2022-11-09"
+tags: ["Playwright", "NextAuth", "Prisma", "NextJS"]
+organization:
+  name: Echobind
+  site: https://echobind.com
+---
 
-Date: Nov 9th, 2022
+<img src="https://ik.imagekit.io/mthomps4/site/posts/playwright-w-nextauth/two-masks.png" alt="featured.png" class="featured-image">
 
-Image: 
+## Intro
 
-![Playwright with Next-Auth.png](Playwright%20w%20Next-Auth%20and%20Prisma%208d79e77ae98a47fcabd6f9666c64a17d/Playwright_with_Next-Auth.png)
+You may have heard some rumblings in previous [blogs](https://echobind.com/post/why-we-ditched-graphql-for-trpc) and [tweets](https://twitter.com/alexdotjs/status/1589960174495625216) about Echobind moving to tRPC, and our team working on what we are calling [Bison 2.0](https://github.com/echobind/bisonapp). While tRPC is exciting, it is not the only change we are looking into. Over the past year, we have consistently started to leverage [Next-Auth](https://next-auth.js.org/), and have hit countless time sinks with Cypress. Next-Auth obviously plays into our stack built around NextJS, but testing it with Cypress always proved to be a bit… wonky. Having to build custom commands to use node and DB Factories, intercepting, mocking, and worst of all those `.then` waterfalls — Gross.
 
-## Overview
+[Insert Playwright.](https://playwright.dev)
 
-You may have heard some rumblings in previous [blogs](https://echobind.com/post/why-we-ditched-graphql-for-trpc) and [tweets](https://twitter.com/alexdotjs/status/1589960174495625216) about Echobind moving to tRPC, and our team working on what we are calling [Bison 2.0](https://github.com/echobind/bisonapp). While tRPC is exciting, it is not the only change we are looking into. Over the past year we have consistently started to leverage [Next-Auth](https://next-auth.js.org/), and *(without speaking for everyone)* have hit countless time sinks with Cypress. Next-Auth obviously plays into our stack built around NextJS, but testing it with Cypress always proved to be a bit… wonky. Having to build custom commands to use node and DB Factories, intercepting, mocking, and worst of all those `.then` waterfalls — Gross. 
-
-Insert Playwright. 
-
-[Fast and reliable end-to-end testing for modern web apps | Playwright](https://playwright.dev/)
-
-I’m happy to say Playwright has A LOT going for it out of the box in comparison. (but more on that another day 😉) 
+I’m happy to say Playwright has A LOT going for it out of the box in comparison.
 
 Today, I wanted to go over how to quickly configure Playwright with Next-Auth. I was excited to see Playwright had already taken Authentication into account out of the box. There are many options, but the most exciting for me is the ability to save our user sessions into a `storageState` for multiple user roles and re-use them in our specs. No more `beforeEach` where we need to check the Database, create a User, Login, intercept the call, mock the return, wait for the redirect, oh wait what was I testing again…
 
 Oh right, As an Admin I simply want to log in. Geez
 
-Playwright has a whole section on Authentication, but we are going to specifically look at the multiple signed roles section found [here](https://playwright.dev/docs/test-auth#multiple-signed-in-roles). 
+Playwright has a whole section on Authentication, but we are going to specifically look at the multiple signed roles section found [here](https://playwright.dev/docs/test-auth#multiple-signed-in-roles).
 
 ## Sounds great! Where’s the code…
 
 If you haven’t set up Playwright before, follow their quick setup here. [https://playwright.dev/docs/intro#installing-playwright](https://playwright.dev/docs/intro#installing-playwright)
 
-Once set, you should have a `playwright.config.ts` file. (You did choose Typescript right?!) 
+Once set, you should have a `playwright.config.ts` file. (You did choose Typescript right?!)
 
 We are going to add two lines to our default config. A `globalSetup` and `globalTeardown`.
 
@@ -36,11 +45,12 @@ We are going to add two lines to our default config. A `globalSetup` and `global
 const config: PlaywrightTestConfig = {
   globalSetup: require.resolve('./tests/e2e/global-setup'),
   globalTeardown: require.resolve('./tests/e2e/global-teardown'),
+}
 ```
 
-If you are familiar with Jest, or any other testing lib, this should sound straight forward enough. We are going to have two files that do something before and after ALL of our tests run. Here I’ve included these in my `test/e2e/` directory, just be sure you have the right filepath and we’re all set here. 
+If you are familiar with Jest, or any other testing lib, this should sound straightforward enough. We are going to have two files that do something before and after ALL of our tests run. Here I’ve included these in my `test/e2e/` directory, just be sure you have the right file path and we’re all set here.
 
-Lets take a look at our `global-setup` file. (I’ve also included my `constants` file for reference) 
+Let’s take a look at our `global-setup` file. (I’ve also included my `constants` file for reference)
 
 ```tsx
 // tests/e2e/global-setup.ts
@@ -56,9 +66,8 @@ import { ADMIN, APP_URL, LOGIN_URL, USER } from './constants';
 async function globalSetup(_config: FullConfig) {
 
   // These User Factories are specific to our boilerplate
-  // The goal here is to create an Admin and User for your future specs 
+  // The goal here is to create an Admin and User for your future specs
 
-  // TODO: upsert instead of create
   const _adminUser = UserFactory.create({
     email: ADMIN.email,
     emailVerified: new Date().toISOString(),
@@ -86,7 +95,7 @@ async function globalSetup(_config: FullConfig) {
     },
   });
 
-	// The fun part! 
+ // The fun part!
   const browser = await chromium.launch();
   const adminPage = await browser.newPage();
   await adminPage.goto(LOGIN_URL);
@@ -95,7 +104,7 @@ async function globalSetup(_config: FullConfig) {
   await adminPage.locator('data-test=login-submit').click();
   await adminPage.waitForNavigation();
   await adminPage.waitForURL((url) => url.origin === APP_URL, { waitUntil: 'networkidle' });
-  // This saves everything about `adminPage` so far into a named `storageState` 
+  // This saves everything about `adminPage` so far into a named `storageState`
   await adminPage.context().storageState({ path: ADMIN.storageState });
 
   const userPage = await browser.newPage();
@@ -106,10 +115,10 @@ async function globalSetup(_config: FullConfig) {
   await userPage.waitForNavigation();
   await userPage.waitForURL((url) => url.origin === APP_URL, { waitUntil: 'networkidle' });
   // This saves everything about `userPage` so far into a named `storageState`
-	await userPage.context().storageState({ path: USER.storageState });
+ await userPage.context().storageState({ path: USER.storageState });
 
-  // We are done for now :) 
-	await browser.close();
+  // We are done for now :)
+ await browser.close();
 }
 
 export default globalSetup;
@@ -121,7 +130,7 @@ export default globalSetup;
 export const APP_URL = 'http://localhost:3001';
 export const LOGIN_URL = 'http://localhost:3001/login';
 
-// This is primarily args for our DB Factories 
+// This is primarily args for our DB Factories
 // storageState is the named path/file where Playwright will save our session
 export const ADMIN = {
   email: 'brainiac@lex.com',
@@ -139,15 +148,15 @@ export const USER = {
 };
 ```
 
-Let’s walk through this in a bit more detail. 
+Let’s walk through this in a bit more detail.
 
-After creating our Users for future scenarios, we’ll create a `browser` instance in playwright. From there we can open a `page` specific for each user. `adminPage` and `userPage` respectfully. Now for the fun part, each page/browser has `context` Playwright can keep track of and a `storageState` where all of this information can live until you want to call it again. 
+After creating our Users for future scenarios, we’ll create a `browser` instance in playwright. From there we can open a specific `page` for each user. `adminPage` and `userPage` respectfully. Now for the fun part, each page/browser has `context` Playwright can keep track of and a `storageState` where all of this information can live until you want to call it again.
 
-Looking at our `adminPage` calls, you’ll see we have instructed Playwright to navigate to the `LOGIN_URL` and log the user in before saving anything to `storageState`. This means, when we go to use the state for admin, we’ll already have an Admin User signed in to our app, cookies saved, and in our case redirected back to the home page ready to go. 
+Looking at our `adminPage` calls, you’ll see we have instructed Playwright to navigate to the `LOGIN_URL` and log the user in before saving anything to `storageState`. This means, when we go to use the state for admin, we’ll already have an Admin User signed in to our app, cookies saved, and in our case redirected back to the home page ready to go.
 
-In a `beforeEach` scenario, you might perform all these same steps minus the storageState save.  The beauty here is I don’t have to worry about creating a `beforeEach` block for ***every*** spec. 
+In a `beforeEach` scenario, you might perform all these same steps minus the storageState save.  The beauty here is I don’t have to worry about creating a `beforeEach` block for ***every*** spec.
 
-This means: 
+This means:
 
 - Fewer DB hits
 - Faster Specs
@@ -155,9 +164,9 @@ This means:
 
 ## Test Example
 
-Having our Admin and User defined in the global setup means we can make use of `test.use({ storageState: 'file-path-to-storage' });` 
+Having our Admin and User defined in the global setup means we can make use of `test.use({ storageState: 'file-path-to-storage' });`
 
-Our home page is a simple welcome message with the Users name. 
+Our home page is a simple welcome message with the Users name.
 
 ```tsx
 // pages/index.tsx
@@ -204,7 +213,7 @@ test.describe(() => {
 });
 ```
 
-For each of these, we use the StorageState path for each user. Navigate back to the home page, and assert that we see our Welcome text. 
+For each of these, we use the StorageState path for each user. Navigate back to the home page, and assert that we see our Welcome text.
 
 A quick run with `yarn playwright test` and 1… 2… 3… ✅
 

@@ -1,19 +1,29 @@
-# Extending Types for Prisma Extensions in NextJS
+---
+title: Extending Types for Prisma Extensions in NextJS
+description: Lets dive into the newer Prisma Client Extensions and how to use them in NextJS.
+og:
+  title: Extending Types for Prisma Extensions in NextJS
+  description: Lets dive into the newer Prisma Client Extensions and how to use them in NextJS.
+path: '/blog/2022/extending-types-for-prisma-in-nextjs'
+image:
+  src: https://ik.imagekit.io/mthomps4/site/posts/extending-types-for-prisma-in-nextjs/featured.png
+  alt: og-image
+publishedOn: "2022-12-08"
+tags: ["NextJS", "Prisma", "Types"]
+organization:
+  name: Echobind
+  site: https://echobind.com
+---
 
-Created: December 8, 2022 3:01 PM
-Status: Published
-Planned Publish Date: January 4, 2023
-Author: Matt Thompson
-Slug: extending-types-for-prisma-extensions-in-nextjs
-SEO Title: Extending Types for Prisma Extensions in NextJS
-Social Caption: The issue is that now the type PrismaClient has no clue about our new Extensions and the types within. In this use case, we are attempting to create a new signUp method on the User model… Lets see how we can solve that. 
-Approvers: Usman Ibrahim
+<img src="https://ik.imagekit.io/mthomps4/site/posts/extending-types-for-prisma-in-nextjs/featured.png" alt="featured.png" class="featured-image">
 
-If you read my [previous post](https://echobind.com/post/playwright-with-next-auth), you’ll note that I was very excited to try out Prisma’s new [Extensions](https://www.prisma.io/docs/concepts/components/prisma-client/client-extensions) alongside their [Middleware](https://www.prisma.io/docs/concepts/components/prisma-client/middleware) and try out various use cases. When test driving I did hit a snag rebuilding the Types for our new extension to pull through. 
+## Intro
+
+If you read my [previous post](https://mthomps4.com/blog/2022/playwright-w-nextauth-and-prisma), you’ll note that I was very excited to try out Prisma’s new [Extensions](https://www.prisma.io/docs/concepts/components/prisma-client/client-extensions) alongside their [Middleware](https://www.prisma.io/docs/concepts/components/prisma-client/middleware) and try out various use cases. When test driving I did hit a snag rebuilding the Types for our new extension to pull through.
 
 If you are running Prisma with NextJS you’ve probably followed this initial best practice doc: [https://www.prisma.io/docs/guides/database/troubleshooting-orm/help-articles/nextjs-prisma-client-dev-practices](https://www.prisma.io/docs/guides/database/troubleshooting-orm/help-articles/nextjs-prisma-client-dev-practices)
 
-Here we define `prisma` in the `global` object so that we don’t create a bazillion instances of Prisma and have the world crashing down on us. If you are using Typescript, this `global` instance was probably Typed. in our case we had: 
+Here we define `prisma` in the `global` object so that we don’t create a bazillion instances of Prisma and have the world crashing down on us. If you are using Typescript, this `global` instance was probably Typed. in our case we had:
 
 ```tsx
 declare global {
@@ -68,8 +78,8 @@ export type UserWithRelations = User & {
 const logOptions: Prisma.LogLevel[] = process.env.DEBUG ? ['query', 'error'] : ['error'];
 
 type UserCreateArgsWithProfile = Omit<Prisma.UserCreateArgs['data'], 'profile'> & {
-	// Require Profile for signup  
-	profile: Prisma.UserCreateArgs['data']['profile']; 
+ // Require Profile for signup
+ profile: Prisma.UserCreateArgs['data']['profile'];
 };
 
 // mimics Prisma.UserCreateArgs
@@ -129,21 +139,21 @@ export async function connect() {
 }
 ```
 
-![Untitled](Extending%20Types%20for%20Prisma%20Extensions%20in%20NextJS%20b7a54b1dfcbc4bfba0664914f10c9e0f/Untitled.png)
+![Untitled](https://ik.imagekit.io/mthomps4/site/posts/extending-types-for-prisma-in-nextjs/expected.png?updatedAt=1725494692079)
 
 ### If you are using Next-Auth
 
-One other note if you are using Next-Auth. 
+One other note if you are using Next-Auth.
 We kept hitting a snag with the types for Next-Auth’s `PrismaAdapter`
 
-Again, it expects a type of `PrismaClient` but we want to pass our new `ExtendedPrismaClient` type instead. 
+Again, it expects a type of `PrismaClient` but we want to pass our new `ExtendedPrismaClient` type instead.
 
-There was a weird type of error trying to recast this for some reason complaining about Prisma’s `$use` missing on our type. Remembering this is still in the **Experimental Phase.** We didn’t try to dive in too hard here, rather we cast as `unknown` first before passing along the types expected for the adapter. While not ideal, it does work and is something we’ll monitor as Prisma continues to wrap this feature up. 
+There was a weird type of error trying to recast this for some reason complaining about Prisma’s `$use` missing on our type. Remembering this is still in the **Experimental Phase.** We didn’t try to dive in too hard here, rather we cast as `unknown` first before passing along the types expected for the adapter. While not ideal, it does work and is something we’ll monitor as Prisma continues to wrap this feature up.
 
 ```tsx
 export const authOptions: NextAuthOptions = {
   adapter: CustomPrismaAdapter(prisma as unknown as ExtendedPrismaClient),
-  ... 
+  ...
 }
 
 function CustomPrismaAdapter(p: ExtendedPrismaClient) {
@@ -153,7 +163,7 @@ function CustomPrismaAdapter(p: ExtendedPrismaClient) {
 
 ```
 
-## That’s all folks!
+## That’s all folks
 
 Remember to restart that Typescript Server folks. 🙂
 I kept battling this a few times only to realize I needed to “turn it off and on again”.  Once set, you’ll be ready to keep tacking on new extensions and middleware!

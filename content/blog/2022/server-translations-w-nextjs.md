@@ -1,34 +1,43 @@
-# TIL: ServerSide Translations w/ NextJS
+---
+title: "TIL: ServerSide Translations w/ NextJS"
+description: The other day I spent way to long trying to get translations to work ServerSide inside a NextJS API route. Honestly, I did not expect it to become the issue it was. I blamed the weak coffee but continued to dive in. To my surprise, there wasn’t a well-documented answer. I validated some claims in Discord, got a handful of responses that led me down a decent path, and now here I am to share my tale.
+og:
+  title: "TIL: ServerSide Translations w/ NextJS"
+  description: Brew some coffee and lets dive in
+path: '/blog/2022/server-side-translations-with-nextjs'
+image:
+  src: https://ik.imagekit.io/mthomps4/site/posts/server-side-translations-w-nextjs/featured.png
+  alt: og-image
+publishedOn: "2022-12-08"
+tags: ["NextJS", "Translations"]
+organization:
+  name: Echobind
+  site: https://echobind.com
+---
 
-Created: December 8, 2022 11:20 AM
-Social Accounts to Tag: Translate where you want, when you want
-Status: Published
-Planned Publish Date: January 5, 2023
-Author: Matt Thompson
-Slug: server-side-translations-with-nextjs
-SEO Title: ServerSide Translations w/ NextJS
-Social Caption: The other day I spent way to long trying to get translations to work ServerSide inside a NextJS API route. Honestly, I did not expect it to become the issue it was. I blamed the weak coffee but continued to dive in. To my surprise, there wasn’t a well-documented answer. I validated some claims in Discord, got a handful of responses that led me down a decent path, and now here I am to share my tale. 
-Approvers: Krystalyn Bauer
+<img src="https://ik.imagekit.io/mthomps4/site/posts/server-side-translations-w-nextjs/featured.png" alt="featured.png" class="featured-image">
 
-You know the idea: if you have to spend a lot of figuring something out and/or it was hard to find on the interwebs… you should probably write about it. If for no other reason than being kind to your future self. So hello future me 👋🏼! 
+## Intro
+
+You know the idea: if you have to spend a lot of figuring something out and/or it was hard to find on the interwebs… you should probably write about it. If for no other reason than being kind to your future self. So hello future me 👋🏼!
 
 Recently I spent way too long trying to get translations to work ServerSide inside a NextJS API route. I did not expect it to become the issue it did. At first, I blamed the weak coffee, but then I continued to dive in. To my surprise, there wasn’t a well-documented answer. I validated some claims in Discord, got a handful of responses that led me down a decent path, and now here I am to share my findings.
 
 ## The Issue
 
-So, what was I trying to do… 
+So, what was I trying to do…
 
-I’ve been working a ton with Twilio lately. I have started pulling together some concrete examples in an app for future us/me. Specifically, in this scenario, I was working with SMS and simply wanted to supply a translated body for the message going out. Easy enough, right? Grab the user's locale, translate the “Welcome, Johnny!” message, and fire away. In previous stacks translations become a class service util and, well, you just use them - anywhere and everywhere - without really thinking too much about it. 
+I’ve been working a ton with Twilio lately. I have started pulling together some concrete examples in an app for future us/me. Specifically, in this scenario, I was working with SMS and simply wanted to supply a translated body for the message going out. Easy enough, right? Grab the user's locale, translate the “Welcome, Johnny!” message, and fire away. In previous stacks translations become a class service util and, well, you just use them - anywhere and everywhere - without really thinking too much about it.
 
 Off I go to do just that. I set up my `public/locale` folder. Created an `sms` namespace with my test message, added to my API call, and… 💥
 
-Huh?! 
+Huh?!
 
 Did I miss something in the config?
 
-I decided to validate on screen via the client. 
+I decided to validate on screen via the client.
 
-Yup, that worked?! What the… 
+Yup, that worked?! What the…
 
 After searching around I came to find out that the majority of React/NextJS pieces are client driven utils. Meaning all that config and setup is meant for the React useHook. There wasn’t a non-client facing utility to be found… or at least the weak coffee was not helping me find it. Then I went hitting all the channels to see what I could be overlooking.
 
