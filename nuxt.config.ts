@@ -12,6 +12,9 @@ export default defineNuxtConfig({
     '@nuxtjs/seo',
     '@nuxtjs/mdc',
   ],
+  studio: {
+    enabled: true,
+  },
   routeRules: {
     '/': { prerender: true },
     '/connect': { prerender: true },
