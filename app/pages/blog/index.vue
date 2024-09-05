@@ -88,7 +88,7 @@ defineOgImageComponent('OgImageDocs', {
       class="my-10"
     >
       <template #title>
-        <h1 class="text-3xl font-bold my-8">
+        <h1 class="text-5xl font-bold my-8">
           {{ page.title }}
         </h1>
       </template>
