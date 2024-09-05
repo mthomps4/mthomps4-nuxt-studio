@@ -8,7 +8,7 @@ path: '/blog/2022/extending-types-for-prisma-in-nextjs'
 image:
   src: https://ik.imagekit.io/mthomps4/site/posts/extending-types-for-prisma-in-nextjs/featured.png
   alt: og-image
-publishedOn: "2022-12-08"
+publishedOn: "2022-01-04"
 tags: ["NextJS", "Prisma", "Types"]
 organization:
   name: Echobind

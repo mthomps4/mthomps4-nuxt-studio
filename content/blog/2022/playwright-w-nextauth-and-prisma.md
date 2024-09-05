@@ -8,7 +8,7 @@ path: '/blog/2022/playwright-with-next-auth'
 image:
   src: https://ik.imagekit.io/mthomps4/site/posts/playwright-w-nextauth/two-masks.png
   alt: og-image
-publishedOn: "2022-11-09"
+publishedOn: "2022-12-05"
 tags: ["Playwright", "NextAuth", "Prisma", "NextJS"]
 organization:
   name: Echobind

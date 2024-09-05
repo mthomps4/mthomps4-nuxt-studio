@@ -8,7 +8,7 @@ path: '/blog/2022/metaprogramming-graphql-filters'
 image:
   src: "https://ik.imagekit.io/mthomps4/site/posts/metaprogramming-graphql-filters/featured.png"
   alt: Fox with goggles
-publishedOn: "2022-12-08"
+publishedOn: "2022-01-18"
 tags: ["Metaprogramming", "Rails", "GraphQL"]
 organization:
   name: Echobind
