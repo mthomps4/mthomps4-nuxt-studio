@@ -6,11 +6,11 @@ if (!aboutPage.value) {
   throw createError({
     statusCode: 404,
     statusMessage: 'Page not found',
-    fatal: true
+    fatal: true,
   })
 }
 
-const aboutMe = aboutPage.value.hero.summary.map((item) => item.text).join('\n\n')
+const aboutMe = aboutPage.value.hero.summary.map(item => item.text).join('\n\n')
 
 useSeoMeta({
   title: aboutPage.value.title,
@@ -20,12 +20,12 @@ useSeoMeta({
   twitterTitle: aboutPage.value.title,
   twitterDescription: aboutPage.value.description,
   ogImage: `/__og-image__/image${route.path}/og.png`,
-  twitterImage: `/__og-image__/image${route.path}/og.png`
+  twitterImage: `/__og-image__/image${route.path}/og.png`,
 })
 
 defineOgImageComponent('OgImageDocs', {
   title: aboutPage.value.og.title,
-  description: aboutPage.value.og.description
+  description: aboutPage.value.og.description,
 })
 </script>
 

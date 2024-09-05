@@ -6,15 +6,15 @@ const { seo } = useAppConfig()
 const { data: navigation } = await useAsyncData('navigation', () => fetchContentNavigation())
 const { data: files } = useLazyFetch<ParsedContent[]>('/api/search.json', {
   default: () => [],
-  server: false
+  server: false,
 })
 
 useHead({
   meta: [{ name: 'viewport', content: 'width=device-width, initial-scale=1' }],
   link: [{ rel: 'icon', href: '/favicon.ico' }],
   htmlAttrs: {
-    lang: 'en'
-  }
+    lang: 'en',
+  },
 })
 
 defineOgImage({
@@ -22,9 +22,9 @@ defineOgImage({
   alt: 'Matt Thompson - Software Architect, Builder, and Mentor',
   props: {
     title: 'Matt Thompson',
-    description: 'Software Architect, Builder, and Mentor'
+    description: 'Software Architect, Builder, and Mentor',
   },
-  extension: 'png'
+  extension: 'png',
 })
 
 useSeoMeta({
@@ -36,25 +36,25 @@ useSeoMeta({
   twitterImage: seo?.twitterImage,
   twitterCard: 'summary_large_image',
   twitterTitle: seo?.siteName,
-  twitterDescription: seo?.siteName
+  twitterDescription: seo?.siteName,
 })
 
 const links = [
   {
     label: 'About',
     to: '/',
-    icon: 'i-heroicons-user-20-solid'
+    icon: 'i-heroicons-user-20-solid',
   },
   {
     label: 'Connect',
     to: '/connect',
-    icon: 'i-heroicons-envelope-20-solid'
+    icon: 'i-heroicons-envelope-20-solid',
   },
   {
     label: 'Blog',
     to: '/blog',
-    icon: 'i-heroicons-document-20-solid'
-  }
+    icon: 'i-heroicons-document-20-solid',
+  },
 ]
 
 provide('files', files)

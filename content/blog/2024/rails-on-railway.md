@@ -3,6 +3,9 @@ title: Rails on Railway
 description: Ruby on Rails deployed on Railway!
 publishedOn: "2024-05-03"
 path: '/blog/2024/rails-on-railway'
+og:
+  title: Rails on Railway
+  description: Ruby on Rails deployed on Railway!
 image:
   src: https://ik.imagekit.io/mthomps4/site/posts/rails-on-railway/featured.png
   alt: og-image

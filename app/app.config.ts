@@ -5,9 +5,9 @@ export default defineAppConfig({
     footer: {
       bottom: {
         left: 'text-sm text-gray-500 dark:text-gray-400',
-        wrapper: 'border-t border-gray-200 dark:border-gray-800'
-      }
-    }
+        wrapper: 'border-t border-gray-200 dark:border-gray-800',
+      },
+    },
   },
   seo: {
     siteName: 'Matt Thompson',
@@ -15,13 +15,13 @@ export default defineAppConfig({
     twitterCard: 'summary_large_image',
     twitterImage: '/__og-image__/image/og.png',
     ogImage: '/__og-image__/image/og.png',
-    ogUrl: process.env.NUXT_PUBLIC_SITE_URL || 'http://localhost:3000'
+    ogUrl: process.env.NUXT_PUBLIC_SITE_URL || 'http://localhost:3000',
   },
   header: {
     logo: {
       alt: 'Matt Thompson',
       light: '/brand/MThompson-blue.svg',
-      dark: '/brand/MThompson-white.svg'
+      dark: '/brand/MThompson-white.svg',
     },
     search: true,
     colorMode: true,
@@ -29,19 +29,19 @@ export default defineAppConfig({
       {
         'label': 'About',
         'to': '/',
-        'aria-label': 'About'
+        'aria-label': 'About',
       },
       {
         'label': 'Connect',
         'to': '/connect',
-        'aria-label': 'Connect'
+        'aria-label': 'Connect',
       },
       {
         'label': 'Blog',
         'to': '/blog',
-        'aria-label': 'Blog'
-      }
-    ]
+        'aria-label': 'Blog',
+      },
+    ],
   },
   footer: {
     credits: 'Copyright © 2024',
@@ -51,28 +51,28 @@ export default defineAppConfig({
         'icon': 'i-simple-icons-linkedin',
         'to': 'https://linkedin.com/in/mthomps4',
         'target': '_blank',
-        'aria-label': 'LinkedIN - Matt Thompson'
+        'aria-label': 'LinkedIN - Matt Thompson',
       },
       {
         'icon': 'i-simple-icons-x',
         'to': 'https://x.com/mthomsp4',
         'target': '_blank',
-        'aria-label': '@mthomps4 on X'
+        'aria-label': '@mthomps4 on X',
       },
       {
         'icon': 'i-simple-icons-github',
         'to': 'https://github.com/mthomps4',
         'target': '_blank',
-        'aria-label': '@mthomps4 on GitHub'
-      }
-    ]
+        'aria-label': '@mthomps4 on GitHub',
+      },
+    ],
   },
   toc: {
     title: 'Table of Contents',
     bottom: {
       title: '',
       edit: '',
-      links: []
-    }
-  }
+      links: [],
+    },
+  },
 })

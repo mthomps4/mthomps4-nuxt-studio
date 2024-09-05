@@ -6,7 +6,7 @@ if (!page.value) {
   throw createError({
     statusCode: 404,
     statusMessage: 'Page not found',
-    fatal: true
+    fatal: true,
   })
 }
 
@@ -18,12 +18,12 @@ useSeoMeta({
   twitterTitle: page.value.title,
   twitterDescription: page.value.description,
   ogImage: `/__og-image__/image${route.path}/og.png`,
-  twitterImage: `/__og-image__/image${route.path}/og.png`
+  twitterImage: `/__og-image__/image${route.path}/og.png`,
 })
 
 defineOgImageComponent('OgImageDocs', {
   title: page.value.og.title,
-  description: page.value.og.description
+  description: page.value.og.description,
 })
 </script>
 

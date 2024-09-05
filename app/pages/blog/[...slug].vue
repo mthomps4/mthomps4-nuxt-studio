@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { withoutTrailingSlash } from 'ufo'
-
 definePageMeta({
   layout: 'docs',
 })
@@ -8,52 +6,53 @@ definePageMeta({
 const route = useRoute()
 const { toc } = useAppConfig()
 
-const { data: page } = await useAsyncData(route.path, () => {
-  return queryContent(route.path).findOne()
-})
+const contentPath = computed(() => route.path.startsWith('/blog') ? route.path : `/blog${route.path}`)
 
-if (!page.value) {
-  throw createError({
-    statusCode: 404,
-    statusMessage: 'Page not found',
-    fatal: true,
-  })
+const { data: page, error } = await useAsyncData(contentPath.value, () => queryContent(contentPath.value).findOne())
+
+if (error.value) {
+  console.error('Error fetching page:', error.value)
+  throw createError({ statusCode: 404, statusMessage: 'Page not found', fatal: true })
 }
 
-const { data: surround } = await useAsyncData(`${route.path}-surround`, () => {
-  return queryContent()
+if (!page.value) {
+  throw createError({ statusCode: 404, statusMessage: 'Page not found', fatal: true })
+}
+
+const { data: surround } = await useAsyncData(`${route.path}-surround`, () =>
+  queryContent()
     .where({ _extension: 'md', navigation: { $ne: false } })
     .only(['title', 'description', '_path'])
-    .findSurround(withoutTrailingSlash(route.path))
-})
+    .findSurround(withoutTrailingSlash(route.path)),
+)
 
 useSeoMeta({
-  title: page.value.title,
-  description: page.value.description,
-  ogTitle: page.value.title,
-  ogDescription: page.value.description,
-  twitterTitle: page.value.title,
-  twitterDescription: page.value.description,
+  title: page.value?.title || '',
+  description: page.value?.description || '',
+  ogTitle: page.value?.title || '',
+  ogDescription: page.value?.description || '',
+  twitterTitle: page.value?.title || '',
+  twitterDescription: page.value?.description || '',
   ogImage: `/__og-image__/image${route.path}/og.png`,
   twitterImage: `/__og-image__/image${route.path}/og.png`,
 })
 
 defineOgImageComponent('OgImageDocs', {
-  title: page.value.og.title,
-  description: page.value.og.description,
+  title: page.value?.og?.title || 'New Blog Post',
+  description: page.value?.og?.description || 'by Matt Thompson',
 })
 
-// const headline = computed(() => findPageHeadline(page.value));
-const headline = computed(() => page.value.headline)
+const headline = computed(() => page.value?.headline)
+const surroundValue = computed(() => surround.value?.filter(Boolean) || [])
 </script>
 
 <template>
   <UPage>
     <UPageHeader
-      :title="page.title"
-      :description="page.description"
-      :links="page.links"
-      :headline="headline"
+      :title="page.title || ''"
+      :description="page.description || ''"
+      :links="page.links || []"
+      :headline="headline || ''"
     />
 
     <UPageBody prose>
@@ -66,10 +65,7 @@ const headline = computed(() => page.value.headline)
         v-if="page.tags"
         class="my-8"
       >
-        <UDivider
-          v-if="page?.tags"
-          type="solid"
-        />
+        <UDivider type="solid" />
         <h2 class="text-sm font-bold mb-8">
           Related Tags
         </h2>
@@ -85,9 +81,12 @@ const headline = computed(() => page.value.headline)
         </section>
       </section>
 
-      <hr v-if="surround?.length">
+      <hr v-if="surroundValue.length">
 
-      <UContentSurround :surround="surround" />
+      <UContentSurround
+        v-if="surroundValue.length"
+        :surround="surroundValue"
+      />
     </UPageBody>
 
     <template
