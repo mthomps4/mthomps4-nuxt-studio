@@ -13,11 +13,10 @@ export default defineNuxtConfig({
     '@nuxtjs/mdc',
   ],
   routeRules: {
-    '/**': { prerender: true },
     '/': { prerender: true },
     '/connect': { prerender: true },
-    '/blog': { swr: 3600, prerender: true },
-    '/blog/**': { swr: 3600, prerender: true },
+    '/blog': { swr: false },
+    '/blog/**': { swr: false },
     '/api/**': { prerender: true },
     '/api/search.json': { prerender: true },
     '/__studio.json': { prerender: true },
