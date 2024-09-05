@@ -21,23 +21,23 @@ const skip = (pageNumber - 1) * limit
 const tag = Array.isArray(route?.query?.tag) ? route.query.tag[0] : route?.query?.tag
 const { data: posts } = await useAsyncData('posts', () => {
   const query = queryContent('blog')
-    .where({ isDir: { $ne: true }, _draft: { $ne: true } })
+    .where({ isDir: { $ne: true }, isDraft: { $ne: true } })
     .sort({ publishedOn: -1 }) // Sort by creation date, descending
     .limit(limit)
     .skip(skip)
 
   if (tag) {
-    query.where({ tags: { $contains: tag }, isDir: { $ne: true }, _draft: { $ne: true } })
+    query.where({ tags: { $contains: tag } })
   }
 
   return query.find()
 })
 
 const { data: totalPosts } = await useAsyncData('totalPosts', async () => {
-  let q = queryContent('blog').where({ _draft: { $ne: true } })
+  let q = queryContent('blog').where({ isDir: { $ne: true }, isDraft: { $ne: true } })
 
   if (tag) {
-    q = q.where({ tags: { $contains: tag }, _draft: { $ne: true } })
+    q = q.where({ tags: { $contains: tag } })
   }
 
   const p = await q.find()
