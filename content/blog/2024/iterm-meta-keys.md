@@ -11,7 +11,7 @@ image:
 publishedOn: "2024-06-07"
 tags: ["iTerm", "Metakeys"]
 organization:
-  name: Typecraft
+  name: learn.typecraft.com
   site: https://learn.typecraft.com
 ---
 

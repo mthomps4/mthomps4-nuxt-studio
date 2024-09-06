@@ -12,7 +12,7 @@ publishedOn: '2024-06-12'
 tags:
   - tmux
 organization:
-  name: Typecraft
+  name: learn.typecraft.com
   site: https://learn.typecraft.com
 ---
 

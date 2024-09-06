@@ -19,10 +19,11 @@ const pageNumber = Array.isArray(route.query.page)
   : parseInt(route.query.page, 10) || 1
 const skip = (pageNumber - 1) * limit
 const tag = Array.isArray(route?.query?.tag) ? route.query.tag[0] : route?.query?.tag
-const { data: posts } = await useAsyncData('posts', () => {
+const { data: posts } = await useAsyncData('posts', async () => {
   const query = queryContent('blog')
     .where({ isDir: { $ne: true } })
-    .where({ wip: { $not: true } })
+    .where({ _draft: { $ne: true } })
+    .where({ draft: { $ne: true } })
     .sort({ publishedOn: -1 }) // Sort by creation date, descending
     .limit(limit)
     .skip(skip)
@@ -35,7 +36,10 @@ const { data: posts } = await useAsyncData('posts', () => {
 })
 
 const { data: totalPosts } = await useAsyncData('totalPosts', async () => {
-  let q = queryContent('blog').where({ isDir: { $ne: true } }).where({ wip: { $not: true } })
+  let q = queryContent('blog')
+    .where({ isDir: { $ne: true } })
+    .where({ _draft: { $ne: true } })
+    .where({ draft: { $ne: true } })
 
   if (tag) {
     q = q.where({ tags: { $contains: tag } })

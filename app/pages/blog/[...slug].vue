@@ -96,7 +96,25 @@ const surroundValue = computed(() => surround.value?.filter(Boolean) || [])
       <UContentToc
         :title="toc?.title"
         :links="page.body?.toc?.links"
-      />
+      >
+        <template
+          v-if="page.organization?.name"
+          #bottom
+        >
+          <div class="my-2 pt-2 border-t border-slate-200 dark:border-cyan-800">
+            <p class="text-sm">
+              <UIcon
+                name="heroicons:building-office-2"
+                class="inline-block"
+              />
+              This post was originally written for <a
+                :href="page.organization?.site"
+                class="text-cyan-500 hover:text-cyan-700 hover:underline"
+              >{{ page.organization?.name }}</a>
+            </p>
+          </div>
+        </template>
+      </UContentToc>
     </template>
   </UPage>
 </template>
