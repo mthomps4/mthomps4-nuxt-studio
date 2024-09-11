@@ -7,7 +7,7 @@ og:
 image:
   src: "https://ik.imagekit.io/mthomps4/site/posts/ts-claude/Claude-chats.png"
   alt: "Claude Logo"
-path: "/blog/2024/demystifying-ai-integrations"
+path: /blog/2024/demystifying-ai-integrations
 tags:
   - AI
   - ML
