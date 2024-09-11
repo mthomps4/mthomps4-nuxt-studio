@@ -14,6 +14,9 @@ tags:
   - Puppeteer
   - Browserless
   - PDF
+organization:
+  name: Echobind
+  site: https://echobind.com
 ---
 
 ## Intro

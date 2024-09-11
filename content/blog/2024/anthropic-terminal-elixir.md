@@ -15,6 +15,9 @@ tags:
   - Claude
   - Terminal
   - Tmux
+organization:
+  name: Echobind
+  site: https://echobind.com
 ---
 
 <img src="https://ik.imagekit.io/mthomps4/site/posts/ts-claude/claude-terminal.png" alt="Claude in the Terminal" class="featured-image">
