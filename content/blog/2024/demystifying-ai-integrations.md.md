@@ -5,7 +5,7 @@ og:
   title: "Demystifying AI Integrations"
   description: "Learn how to integrate AI into your web apps with ease using Anthropic's Claude and more."
 image:
-  src: "https://imagekit.io/mthomps4/site/posts/ts-claude/claude-chats.png"
+  src: "https://imagekit.io/mthomps4/site/posts/ts-claude/Claude-chats.png"
   alt: "Claude Logo"
 path: "/blog/2024/demystifying-ai-integrations"
 tags:
@@ -21,7 +21,7 @@ organization:
   site: https://echoind.com
 ---
 
-<img src="https://ik.imagekit.io/mthomps4/site/posts/ts-claude/claude-chats.png" alt="Claude Logo" class="featured-image">
+<img src="https://ik.imagekit.io/mthomps4/site/posts/ts-claude/Claude-chats.png" alt="Claude Logo" class="featured-image">
 
 ## Intro
 

@@ -6,7 +6,7 @@ og:
   description: Skip the PDF dependencies by leveraging Browserless with Puppeteer.
 path: /blog/2024/browserless-puppeteer
 image:
-  src: https://ik.imagekit.io/mthomps4/site/posts/browserless-puppeteer/featured.jpeg
+  src: https://ik.imagekit.io/mthomps4/site/posts/browserless-puppeteer/featured.png
   alt: og-image
 publishedOn: '2024-09-01'
 tags:
@@ -18,6 +18,8 @@ organization:
   name: Echobind
   site: https://echobind.com
 ---
+
+<img src="https://ik.imagekit.io/mthomps4/site/posts/browserless-puppeteer/featured.png" alt="Browserless-Puppeteer" class="featured-image">
 
 ## Intro
 
