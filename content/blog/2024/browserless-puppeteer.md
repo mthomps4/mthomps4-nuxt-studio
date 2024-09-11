@@ -74,6 +74,9 @@ That was it! We were now able to leverage Browserless for PDF generation and not
 
 ## Resources
 
+Browserless isn't limited to Puppeteer; it's a versatile solution that also supports Playwright and Selenium. Consider exploring Browserless for your automation needs across these popular browser automation frameworks.
+
 - [Railway Browserless Template](https://railway.app/template/browserless)
+- [Browserless](https://github.com/railwayapp-templates/browserless)
 - [Browserless Docs](https://docs.browserless.io/#using-puppeteer)
 - [Puppeteer Docs](https://pptr.dev/)
