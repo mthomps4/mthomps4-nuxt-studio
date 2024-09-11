@@ -8,7 +8,7 @@ path: /blog/2024/anthropic-terminal-elixir
 image:
   src: https://ik.imagekit.io/mthomps4/site/posts/ts-claude/claude-terminal.png
   alt: og-image
-publishedOn: '2024-10-09'
+publishedOn: '2024-09-09'
 tags:
   - Elixir
   - Anthropic
