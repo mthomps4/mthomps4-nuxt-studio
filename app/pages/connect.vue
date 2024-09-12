@@ -45,7 +45,7 @@ defineOgImageComponent('OgImageDocs', {
           :href="item.to"
           :target="item.target"
           :aria-label="item.ariaLabel"
-          class="w-full h-40 hover:border-primary border-2 border-gray-200 dark:border-slate-800 rounded-xl my-8 flex justify-between items-center shadow-xl p-2 gap-4"
+          class="w-full h-40 hover:border-primary dark:hover:border-cyan-500 border-2 border-gray-200 dark:border-slate-600 rounded-xl my-8 flex justify-between items-center shadow-xl p-2 gap-4"
         >
           <div>
             <div class="flex items-center gap-2">
