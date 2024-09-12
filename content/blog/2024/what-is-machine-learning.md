@@ -10,10 +10,9 @@ image:
 path: /blog/2024/what-is-machine-learning
 publishedOn: "2024-09-12"
 tags:
-  - Machine Learning
   - AI
-  - Data Science
-  - Training
+  - Machine Learning
+  - Datacamp Training
 ---
 
 

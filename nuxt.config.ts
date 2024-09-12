@@ -53,6 +53,7 @@ export default defineNuxtConfig({
       theme: 'one-dark-pro',
       langs: [
         'bash',
+        'erb',
         'c',
         'cpp',
         'css',

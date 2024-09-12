@@ -24,7 +24,7 @@ const { data: posts } = await useAsyncData('posts', async () => {
     .where({ isDir: { $ne: true } })
     .where({ _draft: { $ne: true } })
     .where({ draft: { $ne: true } })
-    .sort({ publishedOn: -1 }) // Sort by creation date, descending
+    .sort({ publishedOn: -1 }) // Sort by publishedOn
     .limit(limit)
     .skip(skip)
 

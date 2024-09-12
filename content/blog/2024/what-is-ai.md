@@ -8,13 +8,11 @@ path: /blog/2024/what-is-ai
 image:
   src: https://ik.imagekit.io/mthomps4/site/posts/what-is-ai/featured.png
   alt: og-image
-publishedOn: '2024-09-12'
+publishedOn: '2024-09-11'
 tags:
   - AI
-  - Datacamp
   - Machine Learning
-  - Data Science
-  - Training
+  - Datacamp Training
 ---
 
 <img src="https://ik.imagekit.io/mthomps4/site/posts/what-is-ai/featured.png" alt="What is AI?" class="featured-image">
