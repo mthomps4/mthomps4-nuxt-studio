@@ -20,7 +20,7 @@ tags:
 ## Intro
 
 Working at as a Software Engineer and Consultant, I have plenty of opportunities to see how AI can be impactful and solve real-world problems.
-However, as you can imagine, with all the hyp around AI, there's also a lot of noise that comes along with it.
+However, as you can imagine, with all the hype around AI, there's also a lot of noise that comes along with it.
 
 I decided to take a step back and learn more about AI and Machine Learning starting with the basics.
 To do this, I'll be following along with a few courses from [Datacamp](https://www.datacamp.com) and eventually applying my knowledge to a real project for us to learn together.
