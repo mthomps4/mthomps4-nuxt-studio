@@ -81,18 +81,18 @@ defineOgImageComponent('OgImageDocs', {
           v-for="(card, index) in aboutPage.features.cards"
           :key="index"
           v-bind="card"
-        />
-      </div>
-
-      <div class="my-4 sm:my-8 flex justify-center">
-        <UButton
-          to="/blog"
-          icon="i-heroicons-arrow-right-20-solid"
-          variant="solid"
-          size="xl"
         >
-          Read More
-        </UButton>
+          <div class="flex justify-center items-end w-full mt-2 h-full">
+            <UButton
+              v-if="card.link"
+              v-bind="card.link"
+              size="lg"
+              :disabled="card.link.disabled"
+              :color="card.link.disabled ? 'gray' : 'primary'"
+              :class="card.link.disabled ? 'cursor-not-allowed' : ''"
+            />
+          </div>
+        </ULandingCard>
       </div>
     </UContainer>
   </div>

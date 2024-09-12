@@ -9,21 +9,26 @@ navigation: false
 path: "/about"
 hero:
   title: "Matt Thompson"
-  description: "Software Architect, Builder, and Mentor"
+  description: "Software Architect, Craftsman, and Mentor"
   summary:
     - text: "I'm a builder and creator at heart."
-    - text: "For over a decade, I've been immersed in the software consulting world, working across industries such as IP Advertising, Healthcare, Telecom, and E-Commerce. I've helped companies understand and solve complex problems while leading teams to drive progress. My primary focus is on solving the right problems and fostering team growth. No one should tackle this kind of work alone. I aim to share my understanding and pitfalls in hopes of building momentum."
-    - text: "During the day, I find myself meeting with stakeholders, project leads, and engineering teams, aiming to define and resolve the problems at hand. My goal is to offer multiple solutions, focusing on what makes sense for both today and the future. I scout ahead, carving a path of options for others to follow."
-    - text: "Beyond software, my passion extends into the physical world of fine woodworking, metalworking, and tool restoration. This pursuit is more than a hobby, it's a commitment to preserving and honing the craft. By collecting books, articles, and resources, I strive to share the knowledge and history I find, learning along the way. I aspire to absorb all I can and share the legacy of learning a craft with the next generation."
-    - text: "Who knows? Maybe one day, I'll bridge the gap between traditional craftsmanship and modern technology in a unique pet project. (AI and Robotics, anyone?) Come along with me on this journey of learning, building, and creating in all sorts of ways."
+    - text: "For over a decade, I've been immersed in software consulting, working across industries including IP Advertising, Healthcare, Telecom, and E-Commerce. I've helped companies understand and solve complex problems while leading teams to drive progress. My focus is on identifying the right problems and fostering team growth. Recognizing that no one should navigate this field alone, I share my experiences and lessons learned to build momentum and mentor others."
+    - text: "Beyond software, my passion extends into the physical realm of fine woodworking, metalworking, and tool restoration. This pursuit is more than a hobby; it's a commitment to preserving and honing a craft passed down through generations prior. Similar to my approach with software development, I aim to mentor others in resourcefulness and honing their own craft (whatever that may be). By curating books, articles, and resources, I share the lessons gathered along the way and stay inspired to pass on a legacy of learning to those interested."
+    - text: "Who knows? Maybe one day, I'll bridge the gap between traditional craftsmanship and modern technology. (AI and Robotics, anyone?) \n While my blog focuses primarily on Software Development, follow along for all the twists and turns I take honing one's craft."
   orientation: horizontal
   image: "/Avatars/tr:w-500,h-500/portrait.png"
   links:
     - label: Connect with me
-      icon: i-heroicons-arrow-right-20-solid
       trailing: true
       to: "/connect"
       size: xl
+      color: gray
+    - label: Read the Blog
+      icon: i-heroicons-arrow-right-20-solid
+      trailing: true
+      to: "/blog"
+      size: xl
+      color: gray
   subtitle: "About Me"
 features:
   title: "Follow Along..."
@@ -34,17 +39,17 @@ features:
       icon: "i-heroicons-command-line"
       image: "/site/tr:w-500,h-500/split-key.jpg"
       # to: "/blog"
-      # links:
-      #   - label: Read More
-      #     to: "/blog"
-      #     icon: "i-heroicons-arrow-right-20-solid"
+      link:
+        label: The Digital Forge
+        to: "/blog"
+        icon: "i-heroicons-arrow-right-20-solid"
     - title: "The Craftsman"
       subtitle: "The Armory"
       image: "/site/tr:w-500,h-500/handplane.png"
-      description: "If you're drawn to the art of fine woodworking, design, and random shop projects, this is your spot. Join me as I share insights from my own journey, along with a growing collection of resources that inspire and guide my craft. Follow my hands-on adventure in creation and craftsmanship."
+      description: "If you're drawn to the art of fine woodworking, design, and random shop projects, this is your spot. Join me as I share insights from my own journey, along with a growing collection of resources that inspire and guide my craft."
       icon: "i-heroicons-wrench-screwdriver"
-      # to: "/blog"
-      # links:
-      #   - label: Read More
-      #     to: "/blog"
-      #     icon: "i-heroicons-arrow-right-20-solid"
+      link:
+        label: The Armory (coming soon)
+        to: "/shop"
+        disabled: true
+        icon: "i-heroicons-arrow-right-20-solid"
