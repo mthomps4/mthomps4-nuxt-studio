@@ -38,20 +38,34 @@ defineOgImageComponent('OgImageDocs', {
           {{ page.subtitle }} <span class="text-cyan-500 font-bold">{{ page.subtitleTag }}</span> {{ page.subtitleEnd }}
         </h2>
       </div>
-      <!-- TODO: Rip the Pro components out for a better mobile experience -->
-      <UPageGrid>
-        <ULandingCard
+      <section class="w-full sm:w-[600px] mx-auto">
+        <a
           v-for="(item, index) in page.connections"
           :key="index"
-          v-bind="item"
-          orientation="horizontal"
+          :href="item.to"
+          :target="item.target"
+          :aria-label="item.ariaLabel"
+          class="w-full h-40 hover:border-primary border-2 border-gray-200 dark:border-slate-800 rounded-xl my-8 flex justify-between items-center shadow-xl p-2 gap-4"
         >
+          <div>
+            <div class="flex items-center gap-2">
+              <UIcon :name="item.icon" />
+              <h3 class="text-lg font-bold">{{ item.label }}</h3>
+            </div>
+            <h3 class="text-base font-bold text-primary">
+              {{ item.title }}
+            </h3>
+            <p class="text-sm">
+              {{ item.description }}
+            </p>
+          </div>
           <NuxtImg
             provider="imagekit"
             :src="item.image"
+            class="aspect-square h-full object-cover"
           />
-        </ULandingCard>
-      </UPageGrid>
+        </a>
+      </section>
     </UPageBody>
   </UContainer>
 </template>

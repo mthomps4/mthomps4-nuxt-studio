@@ -16,38 +16,43 @@ navigation: false
 path: '/connect'
 icon: i-heroicons-envelope-20-solid
 connections:
-  - title: 'LinkedIn - mthomps4'
-    description: 'Connect and stay in touch!'
-    icon: 'i-simple-icons-linkedin'
-    to: 'https://linkedin.com/in/mthomps4'
-    target: '_blank'
-    image: "/site/mascots/lion-linkedin.png"
-    aria-label: 'LinkedIN - Matt Thompson'
-  - title: 'GitHub - @mthomps4'
-    description: 'Personal Playground. Most work is hidden behind Client NDA walls.'
-    icon: 'i-simple-icons-github'
-    to: 'https://github.com/mthomps4'
-    target: '_blank'
-    aria-label: '@mthomps4 on GitHub'
-    image: "/site/mascots/lion-working-3.png"
-  - title: 'Twi...X - @mthomps4'
-    description: "Watching tech twitterz"
-    icon: 'i-simple-icons-x'
-    to: 'https://x.com/mthomps4'
-    target: '_blank'
-    aria-label: '@mthomps4 on X'
-    image: "/site/mascots/lion-movie-popcorn.png"
-  - title: 'Instagram - @_mthomps4'
-    description: "All the random woodworking, gadgets, home renovations, and garage fun."
-    icon: 'i-heroicons-camera-20-solid'
-    to: 'https://www.instagram.com/_mthomps4'
-    target: '_blank'
-    aria-label: 'Instagram Matt Thompson'
-    image: "/site/mascots/lion-workbench.png"
-  - title: 'Email - hey@mthomps4.com'
+  - title: 'hey@mthomps4.com'
+    label: "Email"
     description: "For those trying to limit social media."
     icon: 'i-heroicons-envelope-20-solid'
     to: 'mailto:hey@mthomps4.com'
     target: '_blank'
     aria-label: 'Email Matt Thompson'
     image: "/site/mascots/mail-pidgeon-cartoon.png"
+  - title: '@mthomps4'
+    label: "LinkedIn"
+    description: 'Connect and stay in touch!'
+    icon: 'i-simple-icons-linkedin'
+    to: 'https://linkedin.com/in/mthomps4'
+    target: '_blank'
+    image: "/site/mascots/lion-linkedin.png"
+    aria-label: 'LinkedIn - Matt Thompson'
+  - title: '@mthomps4'
+    label: "GitHub"
+    description: 'Personal Playground. Most work is hidden behind Client NDA walls.'
+    icon: 'i-simple-icons-github'
+    to: 'https://github.com/mthomps4'
+    target: '_blank'
+    aria-label: '@mthomps4 on GitHub'
+    image: "/site/mascots/lion-working-3.png"
+  - title: '@mthomps4'
+    label: "Twi... X"
+    description: "Watching tech twitterz"
+    icon: 'i-simple-icons-x'
+    to: 'https://x.com/mthomps4'
+    target: '_blank'
+    aria-label: '@mthomps4 on X'
+    image: "/site/mascots/lion-movie-popcorn.png"
+  - title: '@_mthomps4'
+    label: "Instagram"
+    description: "Random woodworking, home renovations, and garage fun."
+    icon: 'i-heroicons-camera-20-solid'
+    to: 'https://www.instagram.com/_mthomps4'
+    target: '_blank'
+    aria-label: 'Instagram Matt Thompson'
+    image: "/site/mascots/lion-workbench.png"
