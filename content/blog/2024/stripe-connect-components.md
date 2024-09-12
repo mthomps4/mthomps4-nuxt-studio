@@ -8,7 +8,7 @@ path: /blog/2024/stripe-connect-components
 image:
   src: https://ik.imagekit.io/mthomps4/site/posts/stripe-connect-components/connect-featured.png
   alt: Stripe Connect Components
-publishedOn: '2024-09-12'
+publishedOn: '2024-09-11'
 tags:
   - Stripe
   - Stripe Connect
