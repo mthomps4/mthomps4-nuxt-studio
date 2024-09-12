@@ -62,7 +62,7 @@ defineOgImageComponent('OgImageDocs', {
           <NuxtImg
             provider="imagekit"
             :src="item.image"
-            class="aspect-square h-full object-cover"
+            class="aspect-square h-full object-cover rounded-tr-lg rounded-br-lg"
           />
         </a>
       </section>
