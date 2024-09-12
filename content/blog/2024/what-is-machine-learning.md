@@ -57,6 +57,8 @@ Supervised learning uses pre-fabricated, labeled data for training. The algorith
 - **Multi-class Classification**: Predicts multiple categories (e.g., image recognition)
 - **Regression**: Predicts continuous values (e.g., house price prediction)
 
+A solid example of this is the [Palmer Penguin dataset](https://www.kaggle.com/code/parulpandey/penguin-dataset-the-new-iris/input). You'll see the CSV has quite a bit of data for us to train a model on. From here we can predict the species of penguin, sex, or location based on its physical characteristics.
+
 ### Unsupervised Learning
 
 Unsupervised learning works with unlabeled data. It finds patterns or structures in data without predefined outputs. Examples of unsupervised learning include clustering, dimensionality reduction, and anomaly detection. "Help me find the patterns in this data"
