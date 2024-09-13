@@ -37,7 +37,7 @@ AI integration in web apps is no different than consuming any other 3rd party se
 - The Service: LLM (Large Language Model) to interface with. (Claude-sonnet, GPT-4o, etc)
 - An API/SDK to communicate with the LLM. (Anthropic API, OpenAI API, etc)
 - A UI layer to allow users to interact with our API.
-- Prompt Engineer -- YOU the person asking your deepest darkest poster syndrome induced questions.
+- Prompt Engineer -- YOU the person asking your deepest darkest imposter syndrome induced questions.
 
 From here the rest is simply data/state management in the UI. e.g. How do we take the response from our LLM and display it to the user.
 
