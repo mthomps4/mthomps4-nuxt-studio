@@ -19,10 +19,10 @@ useHead({
 
 defineOgImage({
   component: 'Docs',
-  alt: 'Matt Thompson - Software Architect, Builder, and Mentor',
+  alt: 'Matt Thompson - Software Architect, Craftsman, and Mentor',
   props: {
     title: 'Matt Thompson',
-    description: 'Software Architect, Builder, and Mentor',
+    description: 'Software Architect, Craftsman, and Mentor',
   },
   extension: 'png',
 })

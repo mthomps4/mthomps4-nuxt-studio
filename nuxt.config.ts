@@ -32,7 +32,7 @@ export default defineNuxtConfig({
     url: process.env.NUXT_PUBLIC_SITE_URL || 'http://localhost:3000',
     title: 'Matt Thompson',
     name: 'Matt Thompson',
-    description: 'Software Architect, Builder, and Mentor',
+    description: 'Software Architect, Craftsman, and Mentor',
     defaultLocale: 'en',
   },
   ogImage: {
