@@ -20,7 +20,6 @@ export default defineNuxtPlugin((nuxtApp) => {
   const router = useRouter()
 
   router.afterEach((to) => {
-    console.log('posthog', to)
     nextTick(() => {
       posthog.capture('$pageview', {
         current_url: to.fullPath,
