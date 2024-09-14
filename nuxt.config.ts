@@ -130,7 +130,7 @@ export default defineNuxtConfig({
     },
   },
   plugins: [
-    '~/plugins/posthog.client.js',
+    './plugins/posthog.client.js',
   ],
   runtimeConfig: {
     public: {
