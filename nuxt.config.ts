@@ -129,5 +129,11 @@ export default defineNuxtConfig({
       stylistic: true,
     },
   },
+  runtimeConfig: {
+    public: {
+      posthogPublicKey: process.env.NUXT_PUBLIC_POSTHOG_KEY,
+      posthogHost: 'https://us.i.posthog.com',
+    },
+  },
   compatibilityDate: '2024-07-11',
 })
