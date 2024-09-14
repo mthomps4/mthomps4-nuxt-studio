@@ -29,6 +29,7 @@ defineOgImageComponent('OgImageDocs', {
 const { $posthog } = useNuxtApp()
 const trackLinkClick = (item) => {
   if ($posthog && typeof $posthog === 'function') {
+    console.log('posthog trackLinkClick')
     const posthog = $posthog()
     posthog.capture('connection_link_clicked', {
       link_label: item.label,

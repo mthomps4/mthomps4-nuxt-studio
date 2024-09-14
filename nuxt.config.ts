@@ -129,6 +129,9 @@ export default defineNuxtConfig({
       stylistic: true,
     },
   },
+  plugins: [
+    '~/plugins/posthog.client.js',
+  ],
   runtimeConfig: {
     public: {
       posthogPublicKey: process.env.NUXT_PUBLIC_POSTHOG_KEY,
