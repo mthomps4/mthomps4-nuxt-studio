@@ -8,7 +8,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     api_host: runtimeConfig.public.posthogHost || 'https://us.i.posthog.com',
     person_profiles: 'identified_only',
     disable_session_recording: true,
-    autocapture: false,
+    autocapture: true,
     respect_dnt: true,
     capture_pageview: false, // we add manual pageview capturing below
     loaded: (posthog) => {
