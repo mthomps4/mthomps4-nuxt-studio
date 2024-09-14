@@ -18,8 +18,8 @@ export default defineNuxtConfig({
   routeRules: {
     '/': { prerender: true },
     '/connect': { prerender: true },
-    '/blog': { swr: false },
-    '/blog/**': { swr: false },
+    '/blog': { prerender: true },
+    '/blog/**': { prerender: true },
     '/api/**': { prerender: true },
     '/api/search.json': { prerender: true },
     '/__studio.json': { prerender: true },

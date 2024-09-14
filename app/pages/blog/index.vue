@@ -19,12 +19,12 @@ const pageNumber = Array.isArray(route.query.page)
   : parseInt(route.query.page, 10) || 1
 const skip = (pageNumber - 1) * limit
 const tag = Array.isArray(route?.query?.tag) ? route.query.tag[0] : route?.query?.tag
-const { data: posts } = await useAsyncData('posts', async () => {
+const { data: posts } = await useLazyAsyncData('posts', async () => {
   const query = queryContent('blog')
     .where({ isDir: { $ne: true } })
     .where({ _draft: { $ne: true } })
     .where({ draft: { $ne: true } })
-    .sort({ publishedOn: -1 }) // Sort by publishedOn
+    .sort({ publishedOn: -1 })
     .limit(limit)
     .skip(skip)
 
@@ -33,9 +33,9 @@ const { data: posts } = await useAsyncData('posts', async () => {
   }
 
   return query.find()
-})
+}, { server: false })
 
-const { data: totalPosts } = await useAsyncData('totalPosts', async () => {
+const { data: totalPosts } = await useLazyAsyncData('totalPosts', async () => {
   let q = queryContent('blog')
     .where({ isDir: { $ne: true } })
     .where({ _draft: { $ne: true } })
@@ -48,7 +48,7 @@ const { data: totalPosts } = await useAsyncData('totalPosts', async () => {
   const p = await q.find()
 
   return p.length
-})
+}, { server: false })
 
 const total = totalPosts?.value
 
@@ -66,6 +66,12 @@ function updatePageNumber(newPageNumber) {
 
   window.location.href = `/blog?${searchParams.toString()}`
   // router.push({ force: true, query: { page: newPageNumber } }) // Updates the URL but doesn't reload the page
+
+  // Fetch data on client-side when route changes
+  watch(() => route.fullPath, () => {
+    refresh()
+    refreshTotal()
+  })
 }
 
 const viewAllUrl = process.env.NODE_ENV === 'production' ? 'https://www.mthomps4.com/blog' : 'http://localhost:3000/blog'
@@ -123,60 +129,66 @@ defineOgImageComponent('OgImageDocs', {
           className="text-lg"
         >#{{ tag }}</span>
       </h2>
-      <section class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-        <ULink
-          v-for="(post, index) in posts"
-          :key="index"
-          :to="post.path"
+      <ClientOnly>
+        <section
+          v-if="posts"
+          class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3"
         >
-          <UCard class="group">
-            <div class="flex flex-col gap-y-4">
-              <div class="ring-1 ring-gray-200 dark:ring-gray-800 relative overflow-hidden aspect-[16/9] w-full rounded-lg pointer-events-none">
-                <NuxtImg
-                  :src="post?.image?.src"
-                  :alt="post?.image?.alt"
-                  class="object-cover object-top w-full h-full transform transition-transform duration-200 group-hover:scale-105"
-                />
-              </div>
-              <div class="flex flex-col justify-between flex-1">
-                <div class="flex-1">
-                  <h3 class="text-gray-900 dark:text-white text-xl font-semibold truncate group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors duration-200">
-                    {{ post?.title }}
-                  </h3>
-                  <h4
-                    v-if="post?.headline"
-                    class="text-cyan-600 text-sm font-bold my-2"
-                  >
-                    Series: {{ post?.headline }}
-                  </h4>
-                  <p class="text-base text-gray-500 dark:text-gray-400 mt-1 line-clamp-3">
-                    {{ post?.description }}
-                  </p>
-                  <p class="text-right text-sm my-2 text-gray-500 dark:text-gray-400 font-medium pointer-events-none">
-                    {{ post?.publishedOn }}
-                  </p>
+          <ULink
+            v-for="(post, index) in posts"
+            :key="index"
+            :to="post.path"
+          >
+            <UCard class="group">
+              <div class="flex flex-col gap-y-4">
+                <div class="ring-1 ring-gray-200 dark:ring-gray-800 relative overflow-hidden aspect-[16/9] w-full rounded-lg pointer-events-none">
+                  <NuxtImg
+                    :src="post?.image?.src"
+                    :alt="post?.image?.alt"
+                    class="object-cover object-top w-full h-full transform transition-transform duration-200 group-hover:scale-105"
+                  />
+                </div>
+                <div class="flex flex-col justify-between flex-1">
+                  <div class="flex-1">
+                    <h3 class="text-gray-900 dark:text-white text-xl font-semibold truncate group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors duration-200">
+                      {{ post?.title }}
+                    </h3>
+                    <h4
+                      v-if="post?.headline"
+                      class="text-cyan-600 text-sm font-bold my-2"
+                    >
+                      Series: {{ post?.headline }}
+                    </h4>
+                    <p class="text-base text-gray-500 dark:text-gray-400 mt-1 line-clamp-3">
+                      {{ post?.description }}
+                    </p>
+                    <p class="text-right text-sm my-2 text-gray-500 dark:text-gray-400 font-medium pointer-events-none">
+                      {{ post?.publishedOn }}
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
-            <p
-              v-if="post?.tags"
-              class="text-xs text-right text-gray-500"
-            >
-              {{ post?.tags?.map(tag => `#${tag}`).join(' ') }}
-            </p>
-          </UCard>
-        </ULink>
-      </section>
-      <UPagination
-        :model-value="pageNumber"
-        :total="total"
-        :page-count="limit"
-        :skip="skip"
-        :page="pageNumber"
-        size="sm"
-        class="flex justify-center items-center my-8"
-        @update:model-value="updatePageNumber"
-      />
+              <p
+                v-if="post?.tags"
+                class="text-xs text-right text-gray-500"
+              >
+                {{ post?.tags?.map(tag => `#${tag}`).join(' ') }}
+              </p>
+            </UCard>
+          </ULink>
+        </section>
+        <UPagination
+          v-if="total"
+          :model-value="pageNumber"
+          :total="total"
+          :page-count="limit"
+          :skip="skip"
+          :page="pageNumber"
+          size="sm"
+          class="flex justify-center items-center my-8"
+          @update:model-value="updatePageNumber"
+        />
+      </ClientOnly>
     </section>
   </UPage>
 </template>
