@@ -19,7 +19,7 @@ export default defineNuxtConfig({
     '/': { prerender: true },
     '/connect': { prerender: true },
     '/blog': { ssr: true },
-    '/blog/**': { prerender: true },
+    '/blog/**': { ssr: true },
     '/api/**': { prerender: true },
     '/api/search.json': { prerender: true },
     '/__studio.json': { prerender: true },
