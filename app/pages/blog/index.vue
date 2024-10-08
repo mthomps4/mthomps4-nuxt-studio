@@ -33,7 +33,7 @@ const { data: posts } = await useAsyncData('posts', async () => {
   }
 
   return query.find()
-})
+}, { watch: [() => route.query.page, () => route.query.tag] })
 
 const { data: totalPosts } = await useAsyncData('totalPosts', async () => {
   let q = queryContent('blog')
@@ -48,7 +48,7 @@ const { data: totalPosts } = await useAsyncData('totalPosts', async () => {
   const p = await q.find()
 
   return p.length
-})
+}, { watch: [() => route.query.page, () => route.query.tag] })
 
 const total = totalPosts?.value
 
@@ -65,6 +65,7 @@ function updatePageNumber(newPageNumber) {
   }
 
   window.location.href = `/blog?${searchParams.toString()}`
+  window.location.reload()
   // router.push({ force: true, query: { page: newPageNumber } }) // Updates the URL but doesn't reload the page
 }
 
