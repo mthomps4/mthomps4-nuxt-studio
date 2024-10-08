@@ -16,14 +16,6 @@ navigation: false
 path: '/connect'
 icon: i-heroicons-envelope-20-solid
 connections:
-  - title: 'hey@mthomps4.com'
-    label: "Email"
-    description: "For those trying to limit social media."
-    icon: 'i-heroicons-envelope-20-solid'
-    to: 'mailto:hey@mthomps4.com'
-    target: '_blank'
-    aria-label: 'Email Matt Thompson'
-    image: "/site/mascots/mail-pidgeon-cartoon.png"
   - title: '@mthomps4'
     label: "LinkedIn"
     description: 'Connect and stay in touch!'
@@ -56,3 +48,11 @@ connections:
     target: '_blank'
     aria-label: 'Instagram Matt Thompson'
     image: "/site/mascots/lion-workbench.png"
+  - title: 'hey@mthomps4.com'
+    label: "Email"
+    description: "For those trying to limit social media."
+    icon: 'i-heroicons-envelope-20-solid'
+    to: 'mailto:hey@mthomps4.com'
+    target: '_blank'
+    aria-label: 'Email Matt Thompson'
+    image: "/site/mascots/mail-pidgeon-cartoon.png"

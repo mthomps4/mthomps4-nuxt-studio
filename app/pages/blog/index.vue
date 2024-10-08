@@ -65,7 +65,6 @@ function updatePageNumber(newPageNumber) {
   }
 
   window.location.href = `/blog?${searchParams.toString()}`
-  window.location.reload()
   // router.push({ force: true, query: { page: newPageNumber } }) // Updates the URL but doesn't reload the page
 }
 
