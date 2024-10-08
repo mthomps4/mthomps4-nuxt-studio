@@ -70,14 +70,14 @@ const surroundValue = computed(() => surround.value?.filter(Boolean) || [])
           Related Tags
         </h2>
         <section class="flex flex-wrap gap-4">
-          <ULink
+          <a
             v-for="(tag, index) in page.tags"
             :key="index"
-            :to="`/blog?tag=${tag}`"
-            class="text-sm"
+            :href="`/blog?tag=${tag}`"
+            class="text-sm hover:underline text-cyan-600 dark:text-cyan-400"
           >
             #{{ tag }}
-          </ULink>
+          </a>
         </section>
       </section>
 

@@ -18,7 +18,10 @@ const pageNumber = Array.isArray(route.query.page)
   ? parseInt(route.query.page[0], 10) || 1
   : parseInt(route.query.page, 10) || 1
 const skip = (pageNumber - 1) * limit
-const tag = Array.isArray(route?.query?.tag) ? route.query.tag[0] : route?.query?.tag
+const tag = computed(() => {
+  return Array.isArray(route.query.tag) ? route.query.tag[0] : route.query.tag
+})
+
 const { data: posts } = await useAsyncData('posts', async () => {
   const query = queryContent('blog')
     .where({ isDir: { $ne: true } })
@@ -28,8 +31,8 @@ const { data: posts } = await useAsyncData('posts', async () => {
     .limit(limit)
     .skip(skip)
 
-  if (tag) {
-    query.where({ tags: { $contains: tag } })
+  if (tag.value) {
+    query.where({ tags: { $contains: tag.value } })
   }
 
   return query.find()
@@ -41,8 +44,8 @@ const { data: totalPosts } = await useAsyncData('totalPosts', async () => {
     .where({ _draft: { $ne: true } })
     .where({ draft: { $ne: true } })
 
-  if (tag) {
-    q = q.where({ tags: { $contains: tag } })
+  if (tag.value) {
+    q = q.where({ tags: { $contains: tag.value } })
   }
 
   const p = await q.find()
@@ -55,9 +58,9 @@ const total = totalPosts?.value
 function updatePageNumber(newPageNumber) {
   const searchParams = new URLSearchParams({ page: newPageNumber.toString() })
 
-  if (tag) {
+  if (tag.value) {
     if (Array.isArray(tag)) {
-      tag.forEach(t => searchParams.append('tag', t))
+      tag.value.forEach(t => searchParams.append('tag', t))
     }
     else {
       searchParams.append('tag', tag)
